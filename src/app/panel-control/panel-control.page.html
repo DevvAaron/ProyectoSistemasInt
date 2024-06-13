@@ -1,19 +1,21 @@
+<ion-header></ion-header>
+
 <ion-content [fullscreen]="true">
-    <video autoplay muted loop id="video-background" preload="auto" onended="this.play()">
-      <source src="../assets/Videos/fondo2.mp4" type="video/mp4">
-    </video>
-    <ion-label class="panel-label">PANEL DE CONTROL</ion-label>
-    <ion-button expand="block" class="button-registrar" (click)="registrar()">REGISTRAR</ion-button>
-    <ion-item class="button-labs">
-      <ion-label>Seleccionar Laboratorio</ion-label>
-      <ion-select (ionChange)="seleccionarLab($event.detail.value)">
-        <ion-select-option value="lab902">lab902</ion-select-option>
-        <ion-select-option value="lab903">lab903</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <div class="camera-rectangle">
-      <!-- Contenido de la cámara aquí -->
-      <video id="camera-feed" width="100%" height="100%" autoplay></video>
-    </div>
-  </ion-content>
-  
+  <video autoplay muted loop id="video-background" preload="auto" onended="this.play()">
+    <source src="../assets/Videos/fondo2.mp4" type="video/mp4">
+  </video>
+  <ion-label class="panel-label">PANEL DE CONTROL</ion-label>
+  <ion-button expand="block" class="button-registrar" (click)="registrar()">REGISTRAR</ion-button>
+  <ion-item class="button-labs">
+    <ion-label>Seleccionar Laboratorio</ion-label>
+    <ion-select (ionChange)="seleccionarLab($event.detail.value)">
+      <ion-select-option value="lab902">LAB902</ion-select-option>
+      <ion-select-option value="lab903">LAB903</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <div class="camera-rectangle">
+    <!-- Contenido de la cámara aquí -->
+    <video #cameraFeed id="camera-feed" width="100%" height="100%" autoplay></video>
+  </div>
+  <ion-button expand="block" (click)="captureAndInfer()">Inferir</ion-button>
+</ion-content>
