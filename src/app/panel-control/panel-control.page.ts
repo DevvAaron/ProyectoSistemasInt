@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { RoboflowApiService } from '../roboflow-api.service';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-panel-control',
@@ -7,36 +8,56 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./panel-control.page.scss'],
 })
 export class PanelControlPage implements OnInit {
+  @ViewChild('cameraFeed', { static: false }) cameraFeed!: ElementRef<HTMLVideoElement>;
 
-  constructor(private navCtrl: NavController) { }
+  constructor(private roboflowApiService: RoboflowApiService, private platform: Platform) {}
 
   ngOnInit() {
-    // Obtener el elemento video
-    const videoElement = document.getElementById('camera-feed') as HTMLVideoElement;
-
-    // Pedir permiso para acceder a la cámara
-    navigator.mediaDevices.getUserMedia({ video: true })
-      .then((stream) => {
-        // Asignar el flujo de la cámara al elemento video
-        videoElement.srcObject = stream;
-      })
-      .catch((error) => {
-        console.error('Error al acceder a la cámara:', error);
-      });
+    this.platform.ready().then(() => {
+      this.initializeCamera();
+    });
   }
 
   registrar() {
-    // Lógica para registrar
-    console.log('Registrando...');
+    // Lógica para el método registrar
+    console.log('Registrar button clicked');
   }
 
   seleccionarLab(lab: string) {
-    // Lógica para seleccionar el laboratorio
-    console.log('Laboratorio seleccionado:', lab);
+    // Lógica para el método seleccionarLab
+    console.log('Selected lab:', lab);
   }
 
-  goToLoginProfesional() {
-    // Lógica para navegar a la página de login de profesionales
-    this.navCtrl.navigateForward('/login-profesional');
+  initializeCamera() {
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        this.cameraFeed.nativeElement.srcObject = stream;
+      })
+      .catch(err => {
+        console.error('Error accessing webcam: ', err);
+      });
+  }
+
+  captureAndInfer() {
+    const video = this.cameraFeed.nativeElement;
+    const canvas = document.createElement('canvas');
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    const ctx = canvas.getContext('2d');
+
+    if (ctx) {
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const imageData = canvas.toDataURL('image/jpeg').split(',')[1];
+
+      const datasetSlug = 'proyectoccompputadoras'; // Reemplaza con tu dataset slug
+      const versionNumber = '2'; // Reemplaza con tu versión número
+      const apiKey = 'kEet1F6PPxKxSeO8LyDQ'; // Reemplaza con tu API key
+
+      this.roboflowApiService.inferFromDataset(datasetSlug, versionNumber, apiKey, imageData).subscribe(response => {
+        console.log('Inference response: ', response);
+      });
+    } else {
+      console.error('Error: 2D context not available.');
+    }
   }
 }

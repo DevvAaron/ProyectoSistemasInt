@@ -5,8 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { PanelControlPageRoutingModule } from './panel-control-routing.module';
-
 import { PanelControlPage } from './panel-control.page';
+import { HttpClientModule } from '@angular/common/http';  // Importa HttpClientModule
 
 @NgModule({
   imports: [
@@ -14,7 +14,8 @@ import { PanelControlPage } from './panel-control.page';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
-    PanelControlPageRoutingModule
+    PanelControlPageRoutingModule,
+    HttpClientModule  // Añade HttpClientModule aquí
   ],
   declarations: [PanelControlPage]
 })
