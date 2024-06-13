@@ -1,0 +1,109 @@
+/* Custom styles for video background */
+#video-background {
+    /* tus estilos actuales para el video */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    /* aplica la animación */
+    animation: moveBackground 10s linear infinite alternate;
+  }
+
+  ion-content {
+    position: relative;
+    z-index: 1; /* Ensure the content is in front of the video */
+  }
+  
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    margin-top: 10vh; /* Ajusta la distancia desde la parte superior */
+  }
+
+  .camera-rectangle {
+    position: absolute; /* Posiciona el rectángulo de la cámara */
+    top: 50%; /* Centra verticalmente el rectángulo */
+    left: 50%; /* Centra horizontalmente el rectángulo */
+    width: 880px; /* Ancho original reducido en un 25% */
+    height: 675px; /* Altura original reducida en un 25% */      
+    z-index: 2; /* Asegura que esté por encima del video */
+    transform: translate(-50%, -50%); /* Centra completamente el rectángulo */
+    border: 30px solid black; /* Cambia el tamaño del borde a 30px */
+}
+
+  
+  .data-label {
+    width: 25%;
+    font-weight: bold;
+    text-align: center;
+    transform: translate(-220px, -160px); /* Mueve el input 50px hacia la derecha */
+  }
+  
+  .data-label1 {
+    width: 25%;
+    text-align: center;
+    transform: translate(-220px, -160px); /* Mueve el input 50px hacia la derecha */
+    font-size: 4em; /* Ajusta el tamaño de la letra según tus necesidades */
+    font-weight: bold; /* Hace que el texto sea negrita */
+    padding: 10px; /* Opcional: Añade un poco de espacio interno para que el borde no esté pegado al texto */
+    
+  }
+  
+  .button-container ion-button {
+    margin: 25px;
+    width: 15%;
+    transform: translate(-220px, -160px); /* Mueve el input 50px hacia la derecha */
+  }
+  .panel-label {
+    width: 55%;
+    text-align: center;
+    position: absolute;
+    top: 20px; /* Mantener la posición vertical */
+    left: 50%; /* Posición horizontal centrada en relación al contenedor */
+    transform: translateX(-50%); /* Centrar horizontalmente */
+    z-index: 2; /* Asegura que el label esté por encima del video */
+    color: white; /* Color del texto */
+    font-size: 6em; /* Tamaño del texto */
+    font-weight: bold;
+  }
+  
+
+  .data-input {
+    width: 15%; /* Ocupa todo el ancho del label */
+    margin: 15px;
+    transform: translate(-220px, -160px); /* Mueve el input 50px hacia la derecha */
+    text-align: center;
+    background-color: white; /* Fondo blanco */
+    padding: 15px; /* Añade un poco de espacio interno para separar el texto del borde */
+    color: black; /* Color del texto negro */
+    font-weight: bold;
+  }
+  .button-container ion-button.button-solid {
+    --background: rgb(52, 48, 165) !important; /* Sobrescribe el color de fondo a rojo */
+    --color: white !important; /* Sobrescribe el color del texto a blanco */
+  }
+  
+  .button-container ion-button.button-solid:hover {
+    --background: rgb(255, 0, 0) !important; /* Cambia el color de fondo al pasar el mouse */
+  }
+  .button-labs {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+  }
+  
+  .button-registrar {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+  }

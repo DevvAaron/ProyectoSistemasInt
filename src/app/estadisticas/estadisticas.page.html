@@ -1,0 +1,31 @@
+<ion-content [fullscreen]="true">
+  <ion-content fullscreen="true">
+    <video autoplay muted loop id="video-background" preload="auto" onended="this.play()">
+      <source src="../assets/Videos/fondo2.mp4" type="video/mp4">
+    </video>
+  
+    <ion-grid>
+      <ion-toolbar style="text-align: center;">
+        <ion-title>Estadistica</ion-title>
+      </ion-toolbar>
+    </ion-grid>
+    <ion-content class="contenido">
+      <div class="chart-container">
+        <canvas id="investments-chart"></canvas>
+        <div class="chart-text" style=" text-align:center;">Objeto Perdido</div>
+      </div>
+    </ion-content>
+    <ion-content class="contenido1">
+      <div class="chart-container1">
+        <canvas id="investments1-chart"></canvas>
+        <div class="chart-text1" style=" text-align:center;"> Tipo Insidente</div>
+      </div>
+    </ion-content>
+    <ion-content class="contenido2">
+      <div class="chart-container2">
+        <canvas id="investments2-chart"></canvas>
+        <div class="chart-text2" style=" text-align:center;">Cantidad de Insidentes</div>
+      </div>
+    </ion-content>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</ion-content>

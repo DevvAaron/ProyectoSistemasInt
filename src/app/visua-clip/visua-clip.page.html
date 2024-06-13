@@ -1,0 +1,11 @@
+<ion-content [fullscreen]="true">
+    <video autoplay muted loop id="video-background" preload="auto" onended="this.play()">
+      <source src="../assets/Videos/fondo2.mp4" type="video/mp4">
+    </video>
+    <ion-label class="panel-label">VISUALIZAR CLIP</ion-label>
+    <div class="camera-rectangle">
+      <!-- Contenido de la cámara aquí -->
+      <video id="camera-feed" width="100%" height="100%" autoplay></video>
+    </div>
+  </ion-content>
+  

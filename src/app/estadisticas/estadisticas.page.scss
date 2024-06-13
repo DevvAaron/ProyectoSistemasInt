@@ -1,0 +1,201 @@
+/* Custom styles for video background */
+#video-background {
+  /* tus estilos actuales para el video */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  /* aplica la animación */
+  animation: moveBackground 10s linear infinite alternate;
+}
+
+ion-content {
+  position: relative;
+  z-index: 1; /* Ensure the content is in front of the video */
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  margin-top: 10vh; /* Ajusta la distancia desde la parte superior */
+}
+
+
+// .data-label {
+//   width: 25%;
+//   font-weight: bold;
+//   text-align: center;
+//   transform: translate(-220px, -160px); /* Mueve el input 50px hacia la derecha */
+//   padding: 20px; /* Opcional: Añade un poco de espacio interno para que el borde no esté pegado al texto */
+// }
+
+ion-grid{
+  transform: translate(0px, 120px);
+}
+
+.data-label1 {
+  width: 25%;
+  text-align: center;
+  transform: translate(-220px, -160px); /* Mueve el input 50px hacia la derecha */
+  font-size: 5em; /* Ajusta el tamaño de la letra según tus necesidades */
+  font-weight: bold; /* Hace que el texto sea negrita */
+  padding: 20px; /* Opcional: Añade un poco de espacio interno para que el borde no esté pegado al texto */
+  
+}
+
+.button-container ion-button {
+  margin: 25px;
+  width: 15%;
+  transform: translate(-220px, -160px); /* Mueve el input 50px hacia la derecha */
+}
+
+.panel-label {
+  position: absolute;
+  top: 60px; /* Ajusta la posición vertical según tus necesidades */
+  left: 165px; /* Ajusta la posición horizontal según tus necesidades */
+  z-index: 21; /* Asegura que el label esté por encima del video */
+  color: white; /* Color del texto */
+  font-size: 8em; /* Tamaño del texto */
+  font-weight: bold;
+  transform: translate(650px, -125px);
+}
+
+.ion-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.data-input {
+  width: 15%; /* Ocupa todo el ancho del label */
+  margin: 15px;
+  transform: translate(-220px, -160px); /* Mueve el input 50px hacia la derecha */
+  text-align: center;
+  background-color: white; /* Fondo blanco */
+  padding: 3px; /* Añade un poco de espacio interno para separar el texto del borde */
+  color: black; /* Color del texto negro */
+  font-weight: bold;
+}
+.button-container ion-button.button-solid {
+  --background: rgb(52, 48, 165) !important; /* Sobrescribe el color de fondo a rojo */
+  --color: white !important; /* Sobrescribe el color del texto a blanco */
+}
+
+.button-container ion-button.button-solid:hover {
+  --background: rgb(255, 0, 0) !important; /* Cambia el color de fondo al pasar el mouse */
+}
+
+.chart-container {
+  position: relative;
+    width: 500px; /* Ajusta según tus necesidades */
+   height: 400px; /* Ajusta según tus necesidades */
+    display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+     background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco con 50% de transparencia */
+  padding: 10px;
+}
+.chart-container1 {
+  position: relative;
+    width: 600px; /* Ajusta según tus necesidades */
+   height: 400px; /* Ajusta según tus necesidades */
+    display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+     background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco con 50% de transparencia */
+  padding: 10px;
+}
+.chart-container2 {
+  position: relative;
+    width: 500px; /* Ajusta según tus necesidades */
+   height: 380px; /* Ajusta según tus necesidades */
+    display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+     background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco con 50% de transparencia */
+  padding: 10px;
+}
+.contenido {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 500px;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent; /* Fondo transparente */
+}
+
+canvas {
+  position: fixed;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 400px;
+  max-height: 500px;
+}
+.chart-text {
+position: absolute;
+bottom: 85%; /* Ajusta según tus necesidades */
+left: 50%;
+transform: translateX(-100%);
+font-size: 1.2em; /* Ajusta según tus necesidades */
+text-align: center;
+color: #000; /* Cambia el color según tus necesidades */
+}
+.chart-text1 {
+position: absolute;
+bottom: 85%; /* Ajusta según tus necesidades */
+left: 35%;
+transform: translateX(-50%);
+font-size: 1.2em; /* Ajusta según tus necesidades */
+text-align: center;
+color: #000; /* Cambia el color según tus necesidades */
+}
+.chart-text2 {
+position: absolute;
+bottom: 85%; /* Ajusta según tus necesidades */
+left: 60%;
+transform: translateX(-100%);
+font-size: 1.2em; /* Ajusta según tus necesidades */
+text-align: center;
+color: #000; /* Cambia el color según tus necesidades */
+}
+.contenido1 {
+position: fixed;
+top: 50%;
+left: 20%; /* Mover hacia la izquierda */
+transform: translate(-50%, -50%);
+height: 400px;
+width: 450px;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: transparent; /* Fondo transparente */
+}
+.contenido2 {
+position: fixed;
+top: 50%;
+right: 20%; /* Mover hacia la derecha */
+transform: translate(50%, -50%);
+height: 380px;
+width: 500px;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: transparent; /* Fondo transparente */
+}

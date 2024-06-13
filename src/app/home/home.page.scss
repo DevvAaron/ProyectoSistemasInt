@@ -1,0 +1,83 @@
+@font-face {
+  font-family: 'Allstar4';
+  src: url('../Texto/Allstar4.ttf') format('truetype');
+}
+
+#video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  animation: moveBackground 10s linear infinite alternate;
+}
+
+ion-content {
+  position: relative;
+  z-index: 1;
+}
+
+.button-container,
+.data-label,
+.data-label1,
+.button-container ion-button,
+.data-input {
+  font-family: 'Allstar4', sans-serif; /* Aplica la fuente Allstar4 a todos los elementos */
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  margin-top: 42vh;
+  transform: translate(35px);
+}
+
+.data-label, .data-label1 {
+  font-weight: bold;
+  text-align: center;
+  transform: translate(-220px, -160px);
+}
+
+.data-label {
+  width: 25%;
+  margin-bottom: 5px; /* Reduce el espacio entre los elementos */
+}
+
+.data-label1 {
+  width: 15%;
+  font-size: 4em;
+  padding: 10px;
+  margin-bottom: 2px; /* Reduce el espacio entre los elementos */
+}
+
+.button-container ion-button {
+  margin: 15px; /* Reduce el espacio entre los botones */
+  width: 15%;
+  transform: translate(-220px, -160px);
+}
+
+.data-input {
+  width: 15%;
+  margin: 10px; /* Reduce el espacio entre los elementos */
+  transform: translate(-220px, -160px);
+  text-align: center;
+  background-color: white;
+  padding: 15px;
+  color: black;
+  font-weight: bold;
+}
+
+.button-container ion-button.button-solid {
+  --background: rgb(52, 48, 165) !important;
+  --color: white !important;
+}
+
+.button-container ion-button.button-solid:hover {
+  --background: rgb(255, 0, 0) !important;
+}

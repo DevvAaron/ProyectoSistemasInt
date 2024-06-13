@@ -1,0 +1,23 @@
+<ion-content [fullscreen]="true">
+  <video autoplay muted loop id="video-background" preload="auto" onended="this.play()">
+    <source src="../assets/Videos/fondo1.mp4" type="video/mp4">
+  </video>
+  <!-- <img src="../assets/icon/login-imagen.png" alt="Imagen de login"> -->
+  <div class="button-container">
+
+    <ion-label class="data-label1">SIGN UP</ion-label>
+
+    <ion-label class="data-label">USUARIO:</ion-label>
+    <ion-input class="data-input"></ion-input>
+    
+    <ion-label class="data-label">CLAVE:</ion-label>
+    <ion-input class="data-input"></ion-input>
+
+    <ion-label class="data-label">CONFIRMAR CLAVE:</ion-label>
+    <ion-input class="data-input"></ion-input>
+    
+    <ion-button expand="block" (click)="regresarHome()">REGISTRARSE</ion-button>
+  </div>
+  
+</ion-content>
+
