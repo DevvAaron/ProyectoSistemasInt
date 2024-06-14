@@ -1,63 +1,90 @@
 <ion-app>
-  <ion-menu side="start" contentId="main-content">
+  <!-- Menú lateral -->
+  <ion-menu contentId="main-content">
     <ion-header>
-      <ion-toolbar>
-        <ion-title>Menú</ion-title>
+      <ion-toolbar class="menu-toolbar"> 
+        <ion-title>Contenido</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content>
-      <!-- Contenido de la ventana deslizable -->
-      <ion-list>
-        <!-- Opciones del menú -->
-        <ion-item (click)="goToPanelControl()">
-          <ion-icon name="clipboard"></ion-icon>
-          <ion-label>Panel Control</ion-label>
-        </ion-item>
-        <ion-item (click)="goToEstadisticas()">
-          <ion-icon name="stats-chart"></ion-icon>
-          <ion-label>Estadisticas</ion-label>
-        </ion-item>
-        <ion-item (click)="goToListaClips()">
-          <ion-icon name="list"></ion-icon>
-          <ion-label>Lista Clips</ion-label>
-        </ion-item>
-      </ion-list>
+    <ion-content class="ion-padding">
+      <p class="section">
+        <strong class="title">Panel de Control</strong>
+        <br><br>
+        <strong class="label">Uso:</strong><br>
+        Haz clic o toca el botón "Panel de Control" para acceder a las opciones de visualización con respecto a las cámaras de vigilancia.
+      </p>
+      <p class="section">
+        <strong class="title">Estadísticas</strong>
+        <br><br>
+        <strong class="label">Uso:</strong><br>
+        Haz clic o toca el botón "Estadísticas" para visualizar gráficos relacionados a resultados analizados por el sistema de detección.
+      </p>
+      <p class="section">
+        <strong class="title">Lista de clips</strong>
+        <br><br>
+        <strong class="label">Uso:</strong><br>
+        Haz clic o toca el botón "Lista de clips" con la finalidad de observar distintos tipos de clips guardados y almacenados por nuestra base de datos.
+      </p>
     </ion-content>
+    
   </ion-menu>
+  
+  <!-- Contenido principal -->
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Instrucciones</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    
+    <ion-content [fullscreen]="true" class="container">
+      <!-- Video de fondo -->
+      <video autoplay muted loop id="video-background">
+        <source src="../assets/Videos/video2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
 
-  <ion-header>
-    <ion-toolbar>
-      <!-- Botón del menú -->
-      <ion-buttons slot="start">
-        <ion-button (click)="openMenu()">
-          <ion-icon name="menu"></ion-icon>
-          <span class="button-text">Menú</span>
-        </ion-button>
-      </ion-buttons>
-      <!-- Título u otros elementos en el header -->
-      <ion-title>SECURITYLAB</ion-title>
-    </ion-toolbar>
-  </ion-header>
+      <!-- Contenido centralizado -->
+      <div class="content">
+        <!-- Encapsulación de los elementos en un div -->
+        <div class="cards-container">
+          <!-- Panel de control -->
+          <div class="item">
+            <ion-card (click)="goToPanelControl()">
+              <img src="../assets/icon/prueba1.png" alt="Imagen 1">
+              <ion-card-content>
+                <ion-card-title>Panel de Control</ion-card-title>
+                <p>Acceder al panel de control</p>
+              </ion-card-content>
+            </ion-card>
+          </div>
 
-  <ion-content [fullscreen]="true" id="main-content">
-    <!-- Contenido principal -->
-    <video autoplay muted loop id="video-background" preload="auto" onended="this.play()">
-      <source src="../assets/Videos/fondo2.mp4" type="video/mp4">
-    </video>
-    <div class="button-container">
-      <!-- Otros botones u elementos de la página -->
-      <ion-button expand="block" (click)="goToPanelControl()">
-        <img src="../assets/icon/seleccion1.png" alt="Icono" class="button-icon">
-        <span class="button-text">Panel Control</span>
-      </ion-button>
-      <ion-button expand="block" (click)="goToEstadisticas()">
-        <img src="../assets/icon/seleccion2.png" alt="Icono" class="button-icon">
-        <span class="button-text">Estadisticas</span>
-      </ion-button>
-      <ion-button expand="block" (click)="goToListaClips()">
-        <img src="../assets/icon/seleccion3.png" alt="Icono" class="button-icon">
-        <span class="button-text">Lista Clips</span>
-      </ion-button>
-    </div>
-  </ion-content>
+          <!-- Estadísticas -->
+          <div class="item">
+            <ion-card (click)="goToEstadisticas()">
+              <img src="../assets/icon/prueba2.png" alt="Imagen 2">
+              <ion-card-content>
+                <ion-card-title>Estadísticas</ion-card-title>
+                <p>Ver estadísticas detalladas</p>
+              </ion-card-content>
+            </ion-card>
+          </div>
+
+          <!-- Lista de Clips -->
+          <div class="item">
+            <ion-card (click)="goToListaClips()">
+              <img src="../assets/icon/prueba3.png" alt="Imagen 3">
+              <ion-card-content>
+                <ion-card-title>Lista de Clips</ion-card-title>
+                <p>Explorar la lista de clips</p>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+  </div>
 </ion-app>

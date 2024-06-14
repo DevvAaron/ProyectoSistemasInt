@@ -1,8 +1,3 @@
-@font-face {
-  font-family: 'Allstar4';
-  src: url('../Texto/Allstar4.ttf') format('truetype');
-}
-
 #video-background {
   position: fixed;
   top: 0;
@@ -11,73 +6,68 @@
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  animation: moveBackground 10s linear infinite alternate;
 }
 
-ion-content {
+.login-container {
   position: relative;
-  z-index: 1;
-}
-
-.button-container,
-.data-label,
-.data-label1,
-.button-container ion-button,
-.data-input {
-  font-family: 'Allstar4', sans-serif; /* Aplica la fuente Allstar4 a todos los elementos */
-}
-
-.button-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  position: relative;
-  z-index: 1;
-  margin-top: 42vh;
-  transform: translate(35px);
-}
-
-.data-label, .data-label1 {
-  font-weight: bold;
-  text-align: center;
-  transform: translate(-220px, -160px);
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
 }
 
 .data-label {
-  width: 25%;
-  margin-bottom: 5px; /* Reduce el espacio entre los elementos */
-}
-
-.data-label1 {
-  width: 15%;
-  font-size: 4em;
-  padding: 10px;
-  margin-bottom: 2px; /* Reduce el espacio entre los elementos */
-}
-
-.button-container ion-button {
-  margin: 15px; /* Reduce el espacio entre los botones */
-  width: 15%;
-  transform: translate(-220px, -160px);
+  position: absolute;
+  font-size: 10px;
+  color: white;
+  text-align: right;
+  width: 100%;
+  max-width: 200px;
 }
 
 .data-input {
-  width: 15%;
-  margin: 10px; /* Reduce el espacio entre los elementos */
-  transform: translate(-220px, -160px);
-  text-align: center;
-  background-color: white;
-  padding: 15px;
+  position: absolute;
+  width: 100%;
+  max-width: 300px;
+  padding: 15px 10px; /* Aplica padding vertical 15px y horizontal 10px */
+  background-color: rgba(255, 255, 255, 0.8);
   color: black;
-  font-weight: bold;
+  border-radius: 20px;
+  left: 36%;
 }
 
-.button-container ion-button.button-solid {
-  --background: rgb(52, 48, 165) !important;
-  --color: white !important;
+ion-button {
+  position: absolute;
+  width: 50%;
+  max-width: 200px;
+  --background: rgb(121, 0, 0);
+  --color: white;
+  left: 35%; /* Ajusta este valor para mover los botones más a la izquierda */
 }
 
-.button-container ion-button.button-solid:hover {
-  --background: rgb(255, 0, 0) !important;
+ion-button:hover {
+  --background: rgb(0, 0, 0);
+  --color: white;
+}
+
+ion-button:active {
+  --background: #750000;
+  --color: black;
+}
+
+@media (max-width: 768px) {
+  .data-label {
+    font-size: 10px;
+  }
+
+  .data-input {
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+  }
+
+  ion-button {
+    margin-top: 10px;
+  }
 }
