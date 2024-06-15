@@ -4,28 +4,92 @@
       <source src="../assets/Videos/fondo2.mp4" type="video/mp4">
     </video>
   
-    <ion-grid>
-      <ion-toolbar style="text-align: center;">
-        <ion-title>Estadistica</ion-title>
-      </ion-toolbar>
-    </ion-grid>
-    <ion-content class="contenido">
-      <div class="chart-container">
-        <canvas id="investments-chart"></canvas>
-        <div class="chart-text" style=" text-align:center;">Objeto Perdido</div>
-      </div>
-    </ion-content>
-    <ion-content class="contenido1">
-      <div class="chart-container1">
-        <canvas id="investments1-chart"></canvas>
-        <div class="chart-text1" style=" text-align:center;"> Tipo Insidente</div>
-      </div>
-    </ion-content>
-    <ion-content class="contenido2">
-      <div class="chart-container2">
-        <canvas id="investments2-chart"></canvas>
-        <div class="chart-text2" style=" text-align:center;">Cantidad de Insidentes</div>
-      </div>
-    </ion-content>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ <ion-header>
+    <ion-toolbar>
+      <ion-title>Estadísticas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <!-- Tabla Usuarios -->
+  <!-- Tabla Labs -->
+  <ion-grid>
+    <!-- Cabecera de Labs -->
+    <ion-row>
+      <ion-col>
+        <ion-header>NumLab:</ion-header>
+        <ion-list>
+          <ion-item *ngFor="let lab of labs">
+            <div>{{ lab.NumLab }}</div>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col>
+        <ion-header>Profesor:</ion-header>
+        <ion-list>
+          <ion-item *ngFor="let lab of labs">
+            <div>{{ lab.Profesor }}</div>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col>
+        <ion-header>Turno:</ion-header>
+        <ion-list>
+          <ion-item *ngFor="let lab of labs">
+            <div>{{ lab.Turno }}</div>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col>
+        <ion-header>Curso:</ion-header>
+        <ion-list>
+          <ion-item *ngFor="let lab of labs">
+            <div>{{ lab.Curso }}</div>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Tabla Clips -->
+  <ion-grid>
+    <!-- Cabecera de Clips -->
+    <ion-row>
+      <ion-col>
+        <ion-header>ID:</ion-header>
+        <ion-list>
+          <ion-item *ngFor="let clip of clips">
+            <div>{{ clip.id }}</div>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col>
+        <ion-header>NumLab:</ion-header>
+        <ion-list>
+          <ion-item *ngFor="let clip of clips">
+            <div>{{ clip.NumLab }}</div>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col>
+        <ion-header>Hora:</ion-header>
+        <ion-list>
+          <ion-item *ngFor="let clip of clips">
+            <div>{{ clip.Hora }}</div>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col>
+        <ion-header>Clip:</ion-header>
+        <ion-list>
+          <ion-item *ngFor="let clip of clips">
+            <!-- Para mostrar el contenido binario de Clip, se puede convertir a base64 u otro formato adecuado -->
+            <div>{{ clip.Clip }}</div>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- Botón Imprimir -->
+  <ion-button expand="full">Imprimir</ion-button>
+  
 </ion-content>
