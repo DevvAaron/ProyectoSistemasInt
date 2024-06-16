@@ -1,22 +1,57 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { RoboflowApiService } from '../roboflow-api.service';
 import { Platform } from '@ionic/angular';
+import { PanelControlService } from './panel-control.service';
 
 @Component({
   selector: 'app-panel-control',
   templateUrl: './panel-control.page.html',
   styleUrls: ['./panel-control.page.scss'],
 })
+
 export class PanelControlPage implements OnInit {
+  usuarios: any[] = [];
+  labs: any[] = [];
+  clips: any[] = [];
+
+  numLab: string = '';
+  profesor: string = '';
+  turno: string = '';
+  curso: string = '';
+
   @ViewChild('cameraFeed', { static: false }) cameraFeed!: ElementRef<HTMLVideoElement>;
 
-  constructor(private roboflowApiService: RoboflowApiService, private platform: Platform) {}
+  constructor(private roboflowApiService: RoboflowApiService, private platform: Platform,
+    private panelControlService: PanelControlService) {}
 
-  ngOnInit() {
-    this.platform.ready().then(() => {
-      this.initializeCamera();
-    });
-  }
+    ngOnInit() {
+      this.platform.ready().then(() => {
+        this.initializeCamera();
+        this.cargarLabs(); // Agregado este comando
+      });
+    }
+    
+    cargarLabs() {
+      this.panelControlService.getLabs().subscribe(data => {
+        console.log('Labs:', data);
+        this.labs = data;
+      });
+    }
+  
+    registrarLab() {
+      const newLab = {
+        NumLab: this.numLab,
+        Profesor: this.profesor,
+        Turno: this.turno,
+        Curso: this.curso
+      };
+    
+      this.panelControlService.registrarLab(newLab).subscribe(res => {
+        console.log('Respuesta del backend:', res);
+        // Actualizar la lista después de registrar
+        this.cargarLabs();
+      });
+    }
 
   registrar() {
     // Lógica para el método registrar
@@ -60,4 +95,6 @@ export class PanelControlPage implements OnInit {
       console.error('Error: 2D context not available.');
     }
   }
+
+
 }

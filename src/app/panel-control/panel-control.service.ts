@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ListaClipsService {
+export class PanelControlService {
   private apiUrl = 'http://localhost:3000'; // Cambia la URL si tu backend está en un puerto diferente
 
   constructor(private http: HttpClient) {}

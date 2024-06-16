@@ -5,16 +5,16 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ListaClipsService {
+export class LoginAdministradorService {
   private apiUrl = 'http://localhost:3000'; // Cambia la URL si tu backend está en un puerto diferente
 
   constructor(private http: HttpClient) {}
 
-  getLabs(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/labs`);
+  getUsuarios(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/usuarios`);
   }
 
-  registrarLab(newLab: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/registrar-lab`, newLab);
+  registrarUsuario(newUsuario: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/registrar-usuario`, newUsuario);
   }
 }

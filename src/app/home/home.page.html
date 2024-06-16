@@ -4,10 +4,11 @@
   </video>
 
   <div class="login-container">
-    <ion-input class="data-input" placeholder="Ingrese su usuario" style="top: 50vh;"></ion-input>
-    <ion-input class="data-input" type="password" placeholder="Ingrese su clave" style="top: 56vh;"></ion-input>
-    
-    <ion-button expand="block" (click)="goToSeleccion()" style="top: 65vh;">Ingresar</ion-button>
-    <ion-button expand="block" (click)="goToLoginAdministrador()" style="top: 72vh;">Crear Cuenta</ion-button>
+    <form [formGroup]="formHome">
+      <ion-input class="data-input" formControlName="usuario" placeholder="Ingrese su usuario" style="top: 50vh;"></ion-input>
+      <ion-input class="data-input" type="password" formControlName="password" placeholder="Ingrese su clave" style="top: 56vh;"></ion-input>
+      <ion-button expand="block" (click)="login()" style="top: 65vh;">Ingresar</ion-button>
+      <ion-button expand="block" (click)="goToLoginAdministrador()" style="top: 72vh;">Crear Cuenta</ion-button>
+    </form>
   </div>
 </ion-content>
