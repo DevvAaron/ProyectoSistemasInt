@@ -1,28 +1,11 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lista de Clips</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content [fullscreen]="true">
-  <video autoplay muted loop id="video-background" preload="auto" onended="this.play()">
-    <source src="../assets/Videos/fondo2.mp4" type="video/mp4">
-  </video>
-  <div class="button-container">
-    <ion-label class="panel-label">LISTA DE CLIPS SOSPECHOSOS</ion-label>
-  </div>
-  <!-- <ion-item>
-    <ion-label position="floating">Número de Laboratorio</ion-label>
-    <ion-input type="text" [(ngModel)]="numLab"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Profesor</ion-label>
-    <ion-input type="text" [(ngModel)]="profesor"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Turno</ion-label>
-    <ion-input type="text" [(ngModel)]="turno"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Curso</ion-label>
-    <ion-input type="text" [(ngModel)]="curso"></ion-input>
-    <ion-button (click)="registrarLab()">REGISTRAR</ion-button>
-  </ion-item> -->
-  <ion-grid>
+  <ion-grid id="tabla-clips">
     <ion-row>
       <ion-col>
         <ion-header>NumLab:</ion-header>
@@ -58,5 +41,6 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  
+
+  <ion-button expand="full" (click)="generarPDF()">Generar PDF</ion-button>
 </ion-content>

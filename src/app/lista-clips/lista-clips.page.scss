@@ -112,6 +112,14 @@ ion-grid {
   font-weight: bold;
   font-family: 'Allstar4', sans-serif; /* Cambio aquí */
 }
+#tabla-clips ion-header {
+  font-size: 18px; /* Tamaño del texto de los encabezados de columna */
+}
+
+#tabla-clips ion-item div {
+  font-size: 20px; /* Tamaño del texto del contenido de la tabla */
+}
+
 
 .button-container ion-button.button-solid {
   --background: rgb(52, 48, 165) !important; /* Sobrescribe el color de fondo a rojo */

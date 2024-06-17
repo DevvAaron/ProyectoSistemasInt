@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ListaClipsService } from './lista-clips.service';
+import * as jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-lista-clips',
@@ -28,19 +30,53 @@ export class ListaClipsPage implements OnInit {
       this.labs = data;
     });
   }
-
-  registrarLab() {
-    const newLab = {
-      NumLab: this.numLab,
-      Profesor: this.profesor,
-      Turno: this.turno,
-      Curso: this.curso
-    };
+  generarPDF() {
+    const data = document.getElementById('tabla-clips');
   
-    this.listaClipsService.registrarLab(newLab).subscribe(res => {
-      console.log('Respuesta del backend:', res);
-      // Actualizar la lista después de registrar
-      this.cargarLabs();
-    });
+    if (data) {
+      html2canvas(data).then(canvas => {
+        const pdf = new jspdf.jsPDF('p', 'mm', 'a4'); // Tamaño A4 con orientación vertical
+  
+        const imgWidth = 190; // Ancho ajustado para dejar espacio para los márgenes
+        const imgHeight = canvas.height * imgWidth / canvas.width;
+  
+        // Establecer los márgenes y calcular la posición de la tabla
+        const marginLeft = 10; // Margen izquierdo
+        const marginRight = pdf.internal.pageSize.width - marginLeft; // Margen derecho
+        const marginTop = 25; // Margen superior
+        const tableHeight = imgHeight + 60; // Altura de la tabla con título y texto adicional
+        const marginBottom = pdf.internal.pageSize.height - tableHeight - marginTop; // Margen inferior
+  
+        // Agregar título
+        pdf.setFontSize(16);
+        pdf.text('Lista de Clips', (pdf.internal.pageSize.width / 2) - 40, 15, { align: 'center' }); // Título centrado
+  
+        // Obtener la fecha y hora actual
+        const currentDate = new Date();
+        const formattedDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
+        const formattedTime = this.formatTime(currentDate.getHours()) + ':' + this.formatTime(currentDate.getMinutes()) + ':' + this.formatTime(currentDate.getSeconds());
+        const dateTimeText = `Fecha de generación: ${formattedDate} - Hora: ${formattedTime}`;
+  
+        // Agregar texto adicional con la fecha y hora
+        pdf.setFontSize(12);
+        pdf.text(dateTimeText, (pdf.internal.pageSize.width / 2) - 45, 25, { align: 'center' }); // Texto adicional centrado
+  
+        const contentDataURL = canvas.toDataURL('image/png');
+        pdf.addImage(contentDataURL, 'PNG', marginLeft, marginTop, imgWidth, imgHeight); // Posición ajustada de la tabla
+  
+        // Guardar el PDF
+        pdf.save('lista-clips.pdf');
+  
+      }).catch(error => {
+        console.error('Error al generar PDF:', error);
+      });
+    } else {
+      console.error('No se encontró el elemento con el ID "tabla-clips".');
+    }
   }
+  
+  formatTime(timeValue: number): string {
+    return timeValue < 10 ? '0' + timeValue : '' + timeValue;
+  }
+  
 }
