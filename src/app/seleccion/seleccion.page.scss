@@ -1,9 +1,3 @@
-@font-face {
-  font-family: 'Allstar4';
-  src: url('../Texto/Allstar4.ttf') format('truetype');
-}
-
-/* Custom styles for video background */
 #video-background {
   position: fixed;
   top: 0;
@@ -12,90 +6,92 @@
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  animation: moveBackground 10s linear infinite alternate;
 }
 
-ion-content {
-  position: relative;
-  z-index: 1; /* Ensure the content is in front of the video */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 0;
 }
 
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  z-index: 1;
+}
 
-.data-label {
-  width: 25%;
-  font-family: 'Allstar4', sans-serif;
-  font-weight: bold;
+.cards-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.item {
+  margin: 20px;
   text-align: center;
-  transform: translate(-220px, -160px); /* Mueve el input 50px hacia la derecha */
 }
 
-.data-label1 {
-  width: 25%;
-  font-family: 'Allstar4', sans-serif;
-  text-align: center;
-  transform: translate(-220px, -160px); /* Mueve el input 50px hacia la derecha */
-  font-size: 5em; /* Ajusta el tamaño de la letra según tus necesidades */
-  font-weight: bold; /* Hace que el texto sea negrita */
-  padding: 10px; /* Opcional: Añade un poco de espacio interno para que el borde no esté pegado al texto */
+.item ion-card {
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  width: 100%;
+  max-width: 300px;
 }
 
-.button-container ion-button {
-  margin: 50px;
-  width: 40%;
-  height: 190px;
-  font-family: 'Allstar4', sans-serif;
-  transform: translate(515px, 115px); /* Mueve el input 50px hacia la derecha */
-  font-size: 3em;
+.item ion-card:hover {
+  transform: translateY(-5px);
+}
+
+.item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px 8px 0 0;
+}
+
+.item ion-card-content {
+  padding: 16px;
+}
+
+.item ion-card-title {
   font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 8px;
 }
 
-.data-input {
-  width: 15%; /* Ocupa todo el ancho del label */
-  margin: 15px;
-  font-family: 'Allstar4', sans-serif;
-  transform: translate(-220px, -160px); /* Mueve el input 50px hacia la derecha */
-  text-align: center;
-  background-color: white; /* Fondo blanco */
-  padding: 15px; /* Añade un poco de espacio interno para separar el texto del borde */
-  color: black; /* Color del texto negro */
-  font-weight: bold;
+.item p {
+  font-size: 14px;
+  color: #666;
 }
 
-.button-container ion-button.button-solid {
-  --background: rgb(52, 48, 165) !important; /* Sobrescribe el color de fondo a rojo */
-  --color: white !important; /* Sobrescribe el color del texto a blanco */
+/* Estilos para el menú */
+ion-menu::part(backdrop) {
+  background-color: rgba(255, 0, 0, 0.5);
 }
 
-.button-container ion-button.button-solid:hover {
-  --background: rgb(255, 0, 0) !important; /* Cambia el color de fondo al pasar el mouse */
+ion-menu::part(container) {
+  border-radius: 0 20px 20px 0;
+  box-shadow: 4px 0px 16px rgba(38, 36, 37, 0.18);
 }
 
-.button-icon {
-  display: block;
-  width: 140px; /* Ajusta el tamaño de la imagen según tus necesidades */
-  margin-right: 30px; /* Ajusta la distancia entre la imagen y el texto */
-  float: left; /* Permite que la imagen flote a la izquierda dentro del botón */
+.section {
+  margin-bottom: 30px; /* Espacio entre cada sección */
 }
 
-.button-text {
-  display: block;
-  overflow: hidden; /* Evita que el texto se superponga a la imagen */
-  text-align: center;
-  font-family: 'Allstar4', sans-serif;
-  font-weight: bold;
+.title {
+  color: #b90000; /* Color naranja para el título */
 }
 
-ion-header {
-  ion-toolbar {
-    --min-height: 44px; // Ajusta la altura del header según necesites
-  }
-  ion-buttons {
-    margin-left: 8px; // Margen para separar el botón del borde de la pantalla
-  }
-  ion-icon {
-    font-size: 32px; // Ajusta el tamaño del icono según necesites
-  }
+.label {
+  color: #720101; /* Color azul para la etiqueta "Uso:" */
 }
-
-
-
+.menu-toolbar {
+  --background: #000000; /* Color gris oscuro o negro */
+  --color: white; /* Color del texto */
+}
