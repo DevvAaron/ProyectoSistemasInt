@@ -99,68 +99,57 @@ ion-grid{
 
 .chart-container {
   position: relative;
-    width: 500px; /* Ajusta según tus necesidades */
-   height: 400px; /* Ajusta según tus necesidades */
-    display: flex;
+  width: 1000px; /* Ajusta según tus necesidades */
+  height: 880px; /* Ajusta según tus necesidades */
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
-     background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco con 50% de transparencia */
-  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco con 50% de transparencia */
 }
 .chart-container1 {
   position: relative;
-    width: 600px; /* Ajusta según tus necesidades */
-   height: 400px; /* Ajusta según tus necesidades */
-    display: flex;
+  width: 1000px; /* Ajusta según tus necesidades */
+  height: 590px; /* Ajusta según tus necesidades */
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
-     background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco con 50% de transparencia */
+  background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco con 50% de transparencia */
   padding: 10px;
 }
 .chart-container2 {
   position: relative;
-    width: 500px; /* Ajusta según tus necesidades */
-   height: 380px; /* Ajusta según tus necesidades */
-    display: flex;
+  width: 1000px; /* Ajusta según tus necesidades */
+  height: 590px; /* Ajusta según tus necesidades */
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
-     background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco con 50% de transparencia */
+  background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco con 50% de transparencia */
   padding: 10px;
 }
-.contenido {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 500px;
-  width: 400px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent; /* Fondo transparente */
-}
 
-canvas {
-  position: fixed;
-  bottom: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  max-width: 400px;
-  max-height: 500px;
+.chart-container3 {
+  position: relative;
+  width: 1000px; /* Ajusta según tus necesidades */
+  height: 600px; /* Ajusta según tus necesidades */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco con 50% de transparencia */
+  padding: 10px;
 }
 .chart-text {
-position: absolute;
-bottom: 85%; /* Ajusta según tus necesidades */
-left: 50%;
-transform: translateX(-100%);
-font-size: 1.2em; /* Ajusta según tus necesidades */
-text-align: center;
-color: #000; /* Cambia el color según tus necesidades */
+  position: absolute;
+  top: 2.5%; /* Ajusta según tus necesidades */
+  left: 600px;
+  transform: translateX(-100%);
+  font-size: 1.2em; /* Ajusta según tus necesidades */
+  text-align: center;
+  color: #000; /* Cambia el color según tus necesidades */
 }
 .chart-text1 {
 position: absolute;
-bottom: 85%; /* Ajusta según tus necesidades */
-left: 35%;
+top: 5%; /* Ajusta según tus necesidades */
+left: 530px;
 transform: translateX(-50%);
 font-size: 1.2em; /* Ajusta según tus necesidades */
 text-align: center;
@@ -168,36 +157,108 @@ color: #000; /* Cambia el color según tus necesidades */
 }
 .chart-text2 {
 position: absolute;
-bottom: 85%; /* Ajusta según tus necesidades */
-left: 60%;
+bottom: 90%; /* Ajusta según tus necesidades */
+left: 600px;
 transform: translateX(-100%);
 font-size: 1.2em; /* Ajusta según tus necesidades */
 text-align: center;
 color: #000; /* Cambia el color según tus necesidades */
 }
+
+.chart-text3 {
+  position: absolute;
+  top: 4%; /* Ajusta según tus necesidades */
+  left: 600px;
+  transform: translateX(-100%);
+  font-size: 1.2em; /* Ajusta según tus necesidades */
+  text-align: center;
+  color: #000; /* Cambia el color según tus necesidades */
+  }
+
+.contenido {
+  position: relative;
+  top: 480px;
+  left: 650px;
+  transform: translate(-50%, -50%);
+  height: 900px;
+  width: 1300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent; /* Fondo transparente */
+}
+
 .contenido1 {
-position: fixed;
-top: 50%;
-left: 20%; /* Mover hacia la izquierda */
+position: relative;
+top: 45%;
+left: 650px;
 transform: translate(-50%, -50%);
-height: 400px;
-width: 450px;
+height: 900px;
+width: 1300px;
 display: flex;
 justify-content: center;
 align-items: center;
 background-color: transparent; /* Fondo transparente */
 }
+
 .contenido2 {
-position: fixed;
-top: 50%;
-right: 20%; /* Mover hacia la derecha */
+position: relative;
+top: 12%;
+left: -650px; /* Mover hacia la derecha */
 transform: translate(50%, -50%);
-height: 380px;
-width: 500px;
+height: 800px;
+width: 1300px;
 display: flex;
 justify-content: center;
 align-items: center;
-background-color: transparent; /* Fondo transparente */
+background-color: transparent;
+}
+
+.contenido3 {
+  position: relative;
+  top: 15%; /* Centrar verticalmente */
+  left: -650px; /* Mover hacia la derecha */
+  transform: translate(50%, -70%); /* Mover más abajo */
+  height: 800px; /* Ajustar altura según sea necesario */
+  width: 1300px; /* Ajustar ancho según sea necesario */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.PO{
+  position: fixed;
+  top: 60px;
+  left: 600px;
+  transform: translateX(-40%);
+  max-height: 800px;
+  max-width: 800px;
+}
+.PO1{
+  position: fixed;
+  top: 25%;
+  left: 550px;
+  transform: translateX(-40%);
+  max-height: 800px;
+  max-width: 800px;
+}
+.PO2{
+  position: fixed;
+  top: 25%;
+  bottom: 1%;
+  left: 550px;
+  transform: translateX(-40%);
+  max-height: 900px;
+  max-width: 900px;
+}
+.PO3{
+  position: fixed;
+  top: 20%;
+  bottom: 1%;
+  left: 600px;
+  transform: translateX(-40%);
+  max-height: 900px;
+  max-width: 900px;
 }
 
 /* Estilos para el menú */

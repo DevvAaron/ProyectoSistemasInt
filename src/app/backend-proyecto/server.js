@@ -13,6 +13,7 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   database: 'ProyectoSistemas', // Nombre de tu base de datos
+  port: 3307
 });
 
 db.connect((err) => {
@@ -50,6 +51,51 @@ app.get('/clips', (req, res) => {
   db.query(sql, (err, result) => {
     if (err) {
       throw err;
+    }
+    res.json(result);
+  });
+});
+
+app.get('/Profesorrepetidos', (req, res) => {
+  const sql = `SELECT * FROM ProfesorRepetidos`;
+  db.query(sql, (err, result) => {
+    if (err) {
+      throw err;
+    }
+    res.json(result);
+  });
+});
+
+app.get('/Cursosincidentes', (req, res) => {
+  const sql = `SELECT * FROM CursosIncidentes`;
+  db.query(sql, (err, result) => {
+    if (err) {
+      console.error('Error al obtener datos de Cursosincidentes:', err);
+      res.status(500).send('Error interno del servidor');
+      return;
+    }
+    res.json(result);
+  });
+});
+
+app.get('/LabsconIncidentes', (req, res) => {
+  const sql = `SELECT * FROM LabsConIncidentes`;
+  db.query(sql, (err, result) => {
+    if (err) {
+      throw err;
+    }
+    res.json(result);
+  });
+});
+
+app.get('/TurnosconIncidentes', (req, res) => {
+  // Lógica para obtener datos de TurnosconIncidentes desde la base de datos
+  const sql = 'SELECT * FROM TurnosConIncidentes';
+  db.query(sql, (err, result) => {
+    if (err) {
+      console.error('Error en consulta TurnosConIncidentes:', err);
+      res.status(500).send('Error interno del servidor');
+      return;
     }
     res.json(result);
   });
