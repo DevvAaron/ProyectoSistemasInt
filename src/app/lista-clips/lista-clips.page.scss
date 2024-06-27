@@ -18,6 +18,7 @@
 ion-content {
   position: relative;
   z-index: 1; /* Ensure the content is in front of the video */
+  padding: 16px; /* Added padding for content */
 }
 
 .button-container {
@@ -28,7 +29,7 @@ ion-content {
   height: 100%;
   position: relative;
   z-index: 1;
-  margin-top: 10vh; /* Ajusta la distancia desde la parte superior */
+  margin-top: 10vh; /* Adjust distance from the top */
 }
 
 ion-grid {
@@ -38,18 +39,18 @@ ion-grid {
 .data-label1 {
   width: 25%;
   text-align: center;
-  transform: translate(-220px, -160px); /* Mueve el input 50px hacia la derecha */
-  font-size: 4em; /* Ajusta el tamaño de la letra según tus necesidades */
-  font-weight: bold; /* Hace que el texto sea negrita */
-  padding: 20px; /* Opcional: Añade un poco de espacio interno para que el borde no esté pegado al texto */
-  font-family: 'Allstar4', sans-serif; /* Cambio aquí */
+  transform: translate(-220px, -160px); /* Move the input 50px to the right */
+  font-size: 4em; /* Adjust font size as needed */
+  font-weight: bold; /* Make text bold */
+  padding: 20px; /* Optional: Add some internal space so the border isn't right against the text */
+  font-family: 'Allstar4', sans-serif; /* Change here */
 }
 
 .button-container ion-button {
   margin: 25px;
   width: 15%;
   transform: translate(-220px, -160px);
-  font-family: 'Allstar4', sans-serif; /* Cambio aquí */
+  font-family: 'Allstar4', sans-serif; /* Change here */
 }
 
 .panel-label {
@@ -60,7 +61,7 @@ ion-grid {
   font-size: 6.8em;
   font-weight: bold;
   transform: translate(0px, -125px);
-  font-family: 'Allstar4', sans-serif; /* Cambio aquí */
+  font-family: 'Allstar4', sans-serif; /* Change here */
 }
 
 .ion-label {
@@ -102,30 +103,168 @@ ion-grid {
 }
 
 .data-input {
-  width: 15%; /* Ocupa todo el ancho del label */
+  width: 15%; /* Occupies the entire width of the label */
   margin: 15px;
-  transform: translate(-220px, -160px); /* Mueve el input 50px hacia la derecha */
+  transform: translate(-220px, -160px); /* Move the input 50px to the right */
   text-align: center;
-  background-color: white; /* Fondo blanco */
-  padding: 3px; /* Añade un poco de espacio interno para separar el texto del borde */
-  color: black; /* Color del texto negro */
+  background-color: white; /* White background */
+  padding: 3px; /* Add some internal space to separate the text from the border */
+  color: black; /* Black text color */
   font-weight: bold;
-  font-family: 'Allstar4', sans-serif; /* Cambio aquí */
+  font-family: 'Allstar4', sans-serif; /* Change here */
 }
+
 #tabla-clips ion-header {
-  font-size: 18px; /* Tamaño del texto de los encabezados de columna */
+  font-size: 18px; /* Font size for column headers */
+  font-weight: bold; /* Make column headers bold */
+  text-align: center; /* Center align column headers */
+  padding: 8px; /* Add padding to column headers */
+  background-color: #771818; /* Background color for column headers */
+  color: white; /* Text color for column headers */
+  border-radius: 5px; /* Rounded corners for headers */
+}
+
+#tabla-clips ion-item {
+  --inner-padding: 0;
+  --padding-start: 0;
+  --padding-end: 0;
 }
 
 #tabla-clips ion-item div {
-  font-size: 20px; /* Tamaño del texto del contenido de la tabla */
+  font-size: 20px; /* Font size for table content */
+  padding: 8px; /* Add padding to table content */
+  text-align: center; /* Center align table content */
+  // background-color: red; /* Red background for table content */
+  color: white; /* White text color */
+  // border: 1px solid #ddd; /* Border for table cells */
+  border-radius: 5px; /* Rounded corners for cells */
+  margin-bottom: 5px; /* Space between rows */
+}
+
+#tabla-clips {
+  background-color: #000; /* Color de fondo sólido */
+  padding: 16px; /* Espaciado interno para la tabla */
+  border-radius: 10px; /* Esquinas redondeadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  margin: 0 auto; /* Centrar la tabla horizontalmente */
+  max-width: 90%; /* Ancho máximo para evitar que se extienda demasiado */
 }
 
 
+
+
+#tabla-clips .header-cell {
+  background-color: #771818; /* Background color for column headers */
+  color: white; /* Text color for column headers */
+  padding: 8px;
+  border-radius: 5px;
+}
+
+#tabla-clips .data-cell {
+  background-color: red; /* Background color for data cells */
+  color: white; /* Text color for data cells */
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ddd; /* Border for data cells */
+  margin-bottom: 5px;
+}
+
 .button-container ion-button.button-solid {
-  --background: rgb(52, 48, 165) !important; /* Sobrescribe el color de fondo a rojo */
-  --color: white !important; /* Sobrescribe el color del texto a blanco */
+  --background: rgb(52, 48, 165) !important; /* Override background color */
+  --color: white !important; /* Override text color */
 }
 
 .button-container ion-button.button-solid:hover {
-  --background: rgb(255, 0, 0) !important; /* Cambia el color de fondo al pasar el mouse */
+  --background: rgb(255, 0, 0) !important; /* Background color on hover */
+}
+
+/* Styles for the menu */
+ion-menu {
+  --width: 250px;
+  --background: #992222;
+  color: #fff;
+}
+
+/* Styles for ion-menu and its elements */
+ion-toolbar {
+  --background: #771818; /* Change background color of toolbar in the menu */
+  --color: white; /* Change text color in the toolbar */
+}
+
+ion-menu ion-content {
+  --background: #992222;
+}
+
+ion-menu ion-list {
+  --background: #992222;
+  padding: 0; /* Remove padding to avoid internal borders */
+}
+
+ion-menu ion-item {
+  --background: #992222; /* Adjust background color for each list item */
+  --color: #fff; /* Text color in menu list items */
+  --padding-start: 20px; /* Adjust internal space */
+  --padding-end: 20px; /* Adjust internal space */
+  --inner-padding-top: 0; /* Remove internal top padding */
+  --inner-padding-bottom: 0; /* Remove internal bottom padding */
+  border-bottom: 2px solid #992222; /* Dark red bottom line */
+}
+
+ion-menu ion-item:last-child {
+  border-bottom: none; /* Remove bottom border from the last item */
+}
+
+ion-menu ion-item:hover {
+  --background: darken(#992222, 10%); /* Background color on hover */
+}
+
+ion-menu ion-item ion-label {
+  color: #fff; /* Text color within list items */
+}
+
+ion-menu ion-item ion-icon {
+  color: #fff; /* Icon color within list items */
+}
+
+/* Adjustments for the menu button in the toolbar */
+ion-menu-toggle ion-button {
+  color: #fff; /* Text color of the menu button */
+}
+
+/* Additional styles for the main content */
+ion-content#main-content {
+  --background: #fff; /* Background color for the main content */
+}
+
+#tabla-clips ion-col ion-item {
+  --background: rgb(109, 31, 31); /* Cambia el color de fondo del ion-item dentro de ion-col */
+}
+
+#tabla-clips ion-col ion-item {
+  --background: rgb(109, 31, 31); /* Cambia el color de fondo del ion-item dentro de ion-col */
+}
+
+#generarPDF {
+  position: absolute; /* Para mover el botón libremente */
+  top: 11%; /* Ajusta la posición vertical */
+  left: 88%; /* Ajusta la posición horizontal */
+  transform: translate(-50%, -50%); /* Centra el botón en las coordenadas especificadas */
+  width: 240px; /* Ancho del botón */
+  height: 50px; /* Altura del botón */
+  --background: #000000; /* Color de fondo del botón */
+  --color: #ffffff; /* Color del texto del botón */
+  font-size: 18px; /* Tamaño de la fuente */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+}
+
+#generarPDF:hover {
+  --background: #0056b3; /* Color de fondo al pasar el mouse */
+  transform: translate(-50%, -50%) scale(1.05); /* Agranda el botón al pasar el mouse */
+}
+
+#generarPDF:active {
+  --background: #004080; /* Color de fondo al hacer clic */
+  transform: translate(-50%, -50%) scale(0.95); /* Reduce el tamaño del botón al hacer clic */
 }

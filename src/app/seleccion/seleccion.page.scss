@@ -14,6 +14,7 @@
   align-items: center;
   height: 100vh;
   padding: 0;
+  position: relative; /* Agrega esta línea */
 }
 
 .content {
@@ -21,7 +22,10 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  position: absolute; /* Cambia esta línea */
   z-index: 1;
+  top: 50%; /* Agrega esta línea */
+  transform: translateY(-50%); /* Agrega esta línea */
 }
 
 .cards-container {
@@ -31,18 +35,16 @@
   justify-content: center;
 }
 
-.item {
-  margin: 20px;
-  text-align: center;
-}
+
+
 
 .item ion-card {
   cursor: pointer;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-  width: 100%;
-  max-width: 300px;
+  width: 320px; /* Ancho del botón */
+  height: 500px; /* Alto del botón */
 }
 
 .item ion-card:hover {
@@ -57,16 +59,18 @@
 
 .item ion-card-content {
   padding: 16px;
+  text-align: center; /* Centrar el texto dentro del ion-card-title y p */
 }
 
 .item ion-card-title {
   font-weight: bold;
   font-size: 18px;
   margin-bottom: 8px;
+  text-align: center; /* Centrar el texto dentro del ion-card-title y p */
 }
 
 .item p {
-  font-size: 14px;
+  font-size: 17px;
   color: #666;
 }
 
@@ -92,6 +96,7 @@ ion-menu::part(container) {
   color: #720101; /* Color azul para la etiqueta "Uso:" */
 }
 .menu-toolbar {
-  --background: #000000; /* Color gris oscuro o negro */
+  --background: #ff0000; /* Color gris oscuro o negro */
   --color: white; /* Color del texto */
 }
+
