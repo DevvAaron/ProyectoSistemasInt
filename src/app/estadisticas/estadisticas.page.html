@@ -45,81 +45,42 @@
         <source src="../assets/Videos/fondo2.mp4" type="video/mp4">
       </video>
 
-      <!-- <ion-grid>
+      <ion-grid class="contenido">
+        <div class="chart-container">
+           <div class="chart-text">Profesores con Incidentes</div>
+           <canvas class="PO" id="investments-chart" #investmentsChart></canvas>
+        </div>
+      </ion-grid>
+    
+      <ion-grid class="contenido1">
+        <div class="chart-container1">
+            <canvas class="PO1" id="investments1-chart" #investments1Chart></canvas>
+            <div class="chart-text1" style="text-align:center;">Cursos con Incidentes</div>
+        </div>
+      </ion-grid>
+    
+      <ion-grid class="contenido2">
+        <div class="chart-container2">
+          <canvas class="PO2" id="investments2-chart" #investments2Chart></canvas>
+          <div class="chart-text2" style="text-align:center;">Laboratorio con Incidentes</div>
+        </div>
+      </ion-grid>
+    
+      <ion-grid class="contenido3">
+        <div class="chart-container3">
+          <canvas class="PO3" id="investments3-chart" #investments3Chart></canvas>
+          <div class="chart-text3" style="text-align:center;">Turnos con Incidentes</div>
+        </div>
+      </ion-grid>
+      
+      <ion-grid>
+        <!-- Botón Imprimir -->
         <ion-row>
           <ion-col>
-            <ion-header>NumLab:</ion-header>
-            <ion-list>
-              <ion-item *ngFor="let lab of labs">
-                <div>{{ lab.NumLab }}</div>
-              </ion-item>
-            </ion-list>
-          </ion-col>
-          <ion-col>
-            <ion-header>Profesor:</ion-header>
-            <ion-list>
-              <ion-item *ngFor="let lab of labs">
-                <div>{{ lab.Profesor }}</div>
-              </ion-item>
-            </ion-list>
-          </ion-col>
-          <ion-col>
-            <ion-header>Turno:</ion-header>
-            <ion-list>
-              <ion-item *ngFor="let lab of labs">
-                <div>{{ lab.Turno }}</div>
-              </ion-item>
-            </ion-list>
-          </ion-col>
-          <ion-col>
-            <ion-header>Curso:</ion-header>
-            <ion-list>
-              <ion-item *ngFor="let lab of labs">
-                <div>{{ lab.Curso }}</div>
-              </ion-item>
-            </ion-list>
+            <ion-button class="bot" expand="full" (click)="generatePDF()">Descargar</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
-
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-header>ID:</ion-header>
-            <ion-list>
-              <ion-item *ngFor="let clip of clips">
-                <div>{{ clip.id }}</div>
-              </ion-item>
-            </ion-list>
-          </ion-col>
-          <ion-col>
-            <ion-header>NumLab:</ion-header>
-            <ion-list>
-              <ion-item *ngFor="let clip of clips">
-                <div>{{ clip.NumLab }}</div>
-              </ion-item>
-            </ion-list>
-          </ion-col>
-          <ion-col>
-            <ion-header>Hora:</ion-header>
-            <ion-list>
-              <ion-item *ngFor="let clip of clips">
-                <div>{{ clip.Hora }}</div>
-              </ion-item>
-            </ion-list>
-          </ion-col>
-          <ion-col>
-            <ion-header>Clip:</ion-header>
-            <ion-list>
-              <ion-item *ngFor="let clip of clips">
-                <div>{{ clip.Clip }}</div>
-              </ion-item>
-            </ion-list>
-          </ion-col>
-        </ion-row>
-      </ion-grid> -->
-
-      <!-- <ion-button expand="full">Imprimir</ion-button>   -->
     </ion-content>
   </div>
 </ion-app>

@@ -21,4 +21,16 @@ export class EstadisticasService {
   getClips(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/clips`);
   }
+  getProfesorRepetidos(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/Profesorrepetidos`);
+  }
+  getCursosIncidentes(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/Cursosincidentes`);
+  }
+  getLabsConIncidentes(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/LabsconIncidentes`);
+  }
+  getTurnosConIncidentes(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/TurnosconIncidentes`);
+  }
 }
