@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController, MenuController } from '@ionic/angular';
 import { EstadisticasService } from './estadisticas.service';
 
 @Component({
@@ -11,12 +12,13 @@ export class EstadisticasPage implements OnInit {
   labs: any[] = [];
   clips: any[] = [];
 
-  constructor(private estadisticasService: EstadisticasService) {}
+  constructor(private navCtrl: NavController, private menuCtrl: MenuController, private estadisticasService: EstadisticasService) {}
 
   ngOnInit() {
     this.cargarUsuarios();
     this.cargarLabs();
     this.cargarClips();
+    this.openMenu(); // Abre el menú desplazable al iniciar la página
   }
 
   cargarUsuarios() {
@@ -38,5 +40,22 @@ export class EstadisticasPage implements OnInit {
       console.log('Clips:', data);
       this.clips = data;
     });
+  }
+
+  goToPanelControl(){
+    this.navCtrl.navigateForward('/panel-control');
+  }
+
+  goToEstadisticas(){
+    this.navCtrl.navigateForward('/estadisticas');
+  }
+
+  goToListaClips(){
+    this.navCtrl.navigateForward('/lista-clips');
+  }
+
+  openMenu() {
+    this.menuCtrl.enable(true, 'start');
+    this.menuCtrl.open('start');
   }
 }

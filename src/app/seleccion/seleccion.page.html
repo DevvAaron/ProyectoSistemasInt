@@ -1,45 +1,4 @@
 <ion-app>
-  <!-- Menú lateral -->
-  <ion-menu contentId="main-content">
-    <ion-header>
-      <ion-toolbar class="menu-toolbar"> 
-        <ion-title>Contenido</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="ion-padding">
-      <p class="section">
-        <strong class="title">Panel de Control</strong>
-        <br><br>
-        <strong class="label">Uso:</strong><br>
-        Haz clic o toca el botón "Panel de Control" para acceder a las opciones de visualización con respecto a las cámaras de vigilancia.
-      </p>
-      <p class="section">
-        <strong class="title">Estadísticas</strong>
-        <br><br>
-        <strong class="label">Uso:</strong><br>
-        Haz clic o toca el botón "Estadísticas" para visualizar gráficos relacionados a resultados analizados por el sistema de detección.
-      </p>
-      <p class="section">
-        <strong class="title">Lista de clips</strong>
-        <br><br>
-        <strong class="label">Uso:</strong><br>
-        Haz clic o toca el botón "Lista de clips" con la finalidad de observar distintos tipos de clips guardados y almacenados por nuestra base de datos.
-      </p>
-    </ion-content>
-    
-  </ion-menu>
-  
-  <!-- Contenido principal -->
-  <div class="ion-page" id="main-content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title>Instrucciones</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    
     <ion-content [fullscreen]="true" class="container">
       <!-- Video de fondo -->
       <video autoplay muted loop id="video-background">
@@ -56,7 +15,7 @@
             <ion-card (click)="goToPanelControl()">
               <img src="../assets/icon/prueba1.png" alt="Imagen 1">
               <ion-card-content>
-                <ion-card-title>Panel de Control</ion-card-title>
+                <ion-card-title>PANEL DE CONTROL</ion-card-title>
                 <p>Acceder al panel de control</p>
               </ion-card-content>
             </ion-card>
@@ -67,7 +26,7 @@
             <ion-card (click)="goToEstadisticas()">
               <img src="../assets/icon/prueba2.png" alt="Imagen 2">
               <ion-card-content>
-                <ion-card-title>Estadísticas</ion-card-title>
+                <ion-card-title>ESTADISTICAS</ion-card-title>
                 <p>Ver estadísticas detalladas</p>
               </ion-card-content>
             </ion-card>
@@ -78,7 +37,7 @@
             <ion-card (click)="goToListaClips()">
               <img src="../assets/icon/prueba3.png" alt="Imagen 3">
               <ion-card-content>
-                <ion-card-title>Lista de Clips</ion-card-title>
+                <ion-card-title>LISTA DE CLIPS</ion-card-title>
                 <p>Explorar la lista de clips</p>
               </ion-card-content>
             </ion-card>
@@ -86,5 +45,5 @@
         </div>
       </div>
     </ion-content>
-  </div>
+  <!-- </div> -->
 </ion-app>

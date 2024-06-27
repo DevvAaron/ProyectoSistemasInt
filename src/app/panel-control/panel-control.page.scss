@@ -9,6 +9,10 @@
   z-index: -1;
   animation: moveBackground 10s linear infinite alternate;
 }
+body {
+  overflow: hidden;
+}
+
 
 /* Contenedor principal para centrar los elementos */
 .main-container {
@@ -25,11 +29,11 @@
 /* Estilos para el rectángulo de la cámara */
 .camera-rectangle {
   flex: 0 0 auto;
-  width: 805px; /* Ajustado a un tamaño más manejable */
-  height: 450px;
-  border: 5px solid black;
-  margin-left: 40px;
-  margin-right: 50px; /* Espacio entre la cámara y los botones, ajustado a 50px */
+  width: 905px; /* Ajustado a un tamaño más manejable */
+  height: 550px;
+  border: 7px solid black;
+  margin-left: 50px;
+  margin-right: 150px; /* Espacio entre la cámara y los botones, ajustado a 50px */
 }
 
 /* Contenedor de botones */
@@ -52,9 +56,29 @@
   width: 200px;
 }
 
-/* Estilos para el contenido dentro del ion-content */
+/* Ajuste para eliminar el fondo negro de ion-app */
+ion-app {
+  --background: transparent;
+}
+
 ion-content {
-  --background: transparent; /* Hace que el fondo sea transparente */
+  --background: transparent !important; /* Fondo transparente para ion-content */
+}
+
+.custom-input {
+  --background: transparent; /* Fondo transparente */
+  --border-radius: 2px; /* Radio de borde */
+  --border-width: 0; /* Ancho del borde (0 para eliminar el borde) */
+  --border-color: transparent; /* Color del borde (transparente) */
+  --padding-start: 12px; /* Espaciado interior izquierdo */
+  --padding-end: 12px; /* Espaciado interior derecho */
+  margin-top: -10px;
+  width: 70%;
+  margin-left: -80px;
+  margin-right: 250px;
+
+  /* Opcional: Ajustes adicionales */
+  --highlight-height: 0; /* Altura del resaltado (si se desea eliminar) */
 }
 
 /* Estilos personalizados para los botones */
@@ -86,13 +110,184 @@ ion-content {
 .button-registrar:hover,
 .infer-button:hover,
 .button-labs:hover {
-  --background: rgb(0, 0, 0); /* Color de fondo al pasar el mouse */
-  --color: white; /* Color del texto al pasar el mouse */
+  --background: rgb(150, 4, 4); /* Color de fondo al pasar el mouse */
 }
 
 .button-registrar:active,
 .infer-button:active,
 .button-labs:active {
-  --background: rgb(0, 0, 0); /* Color de fondo al hacer clic */
-  --color: white; /* Color del texto al hacer clic */
+  --background: rgb(180, 4, 4); /* Color de fondo al hacer clic */
+}
+
+/* Estilos para el menú */
+ion-menu {
+  --width: 250px;
+  --background: #992222;
+  color: #fff;
+}
+
+/* Estilos para el ion-menu y sus elementos */
+ion-toolbar {
+  --background: #771818; /* Cambiar el color de fondo del toolbar en el menú */
+  --color: white; /* Cambia el color del texto en la barra de herramientas del menú */
+}
+
+ion-menu ion-content {
+  --background: #992222;
+}
+
+ion-menu ion-list {
+  --background: #992222;
+  padding: 0; /* Eliminar el relleno para evitar bordes internos */
+}
+
+ion-menu ion-item {
+  --background: #992222; /* Ajuste de color de fondo para cada elemento de la lista */
+  --color: #fff; /* Color de texto en los elementos de la lista del menú */
+  --padding-start: 20px; /* Ajuste del espacio interno */
+  --padding-end: 20px; /* Ajuste del espacio interno */
+  --inner-padding-top: 0; /* Eliminar relleno interno superior */
+  --inner-padding-bottom: 0; /* Eliminar relleno interno inferior */
+  border-bottom: 2px solid #992222; /* Línea inferior roja oscura */
+}
+
+ion-menu ion-item:last-child {
+  border-bottom: none; /* Eliminar borde inferior del último elemento */
+}
+
+ion-menu ion-item:hover {
+  --background: darken(#992222, 10%); /* Color de fondo al pasar el mouse */
+}
+
+ion-menu ion-item ion-label {
+  color: #fff; /* Color del texto dentro de los elementos de la lista */
+}
+
+ion-menu ion-item ion-icon {
+  color: #fff; /* Color del icono dentro de los elementos de la lista */
+}
+
+/* Ajustes para el botón de menú en la barra de herramientas */
+ion-menu-toggle ion-button {
+  color: #fff; /* Color del texto del botón de menú */
+}
+
+/* Estilos adicionales para el contenido principal */
+ion-content#main-content {
+  --background: #fff; /* Color de fondo del contenido principal */
+}
+
+/* Estilo personalizado para ion-input en ion-item */
+ion-item {
+  --padding-start: 10px; /* Espacio de inicio personalizado */
+  --padding-end: 10px; /* Espacio de finalización personalizado */
+}
+
+ion-label {
+  font-size: 16px; /* Tamaño de fuente para etiquetas */
+  
+}
+
+ion-input {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  width: calc(100% - 24px);
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  position: relative; /* Posicionamiento relativo */
+  top: -20px; /* Ejemplo de ajuste vertical */
+}
+
+ion-input:focus {
+  border-color: #4CAF50; /* Color del borde al enfocar */
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.6); /* Sombra al enfocar */
+  outline: none; /* Elimina el contorno al enfocar */
+}
+
+.custom-input ion-label {
+  font-size: 16px; /* Ajusta el tamaño de la fuente según sea necesario */
+  color: black; /* Color del texto */
+}
+
+.custom-input ion-input {
+  border: 1px solid #ccc; /* Borde del input */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 8px; /* Espaciado interior */
+  font-size: 16px; /* Tamaño de la fuente del input */
+  color: black; /* Color del texto en negro */
+}
+
+.data-label {
+  font-weight: bold; /* Texto en negrita */
+  margin-bottom: 4px; /* Espaciado inferior */
+}
+
+.data-input {
+  border: 1px solid #ccc; /* Borde del input */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 8px; /* Espaciado interior */
+  font-size: 16px; /* Tamaño de la fuente del input */
+  width: 100%; /* Ancho completo */
+  box-sizing: border-box; /* El tamaño total incluye el borde y el padding */
+  color: black; /* Color del texto en negro */
+}
+
+.custom-input ion-label.data-label {
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: bold;
+  position: relative; /* Posicionamiento relativo */
+  top: -20px; /* Ejemplo de ajuste vertical */
+}
+
+
+.custom-input ion-input.data-input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 16px;
+  width: calc(100% - 16px); /* Ajusta el ancho para compensar el padding */
+  margin-top: 8px; /* Espacio superior */
+  color: black; /* Color del texto en negro */
+}
+
+.custom-input {
+  --highlight-background: none;
+  --background: none;
+  --padding-start: 10px;
+  --padding-end: 10px;
+}
+
+.data-label {
+  color: rgb(0, 0, 0);
+  margin-bottom: 15px; /* Añade espacio entre el label y el input */
+
+}
+#boton-registrar {
+  position: absolute; /* Para mover el botón libremente */
+  top: 71%; /* Ajusta la posición vertical */
+  left: 65%; /* Ajusta la posición horizontal */
+  transform: translate(-50%, -50%); /* Centra el botón en las coordenadas especificadas */
+  width: 240px; /* Ancho del botón */
+  height: 50px; /* Altura del botón */
+  --background: #000000; /* Color de fondo del botón */
+  --color: #ffffff; /* Color del texto del botón */
+  font-size: 18px; /* Tamaño de la fuente */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+}
+
+#boton-registrar:hover {
+  --background: #0056b3; /* Color de fondo al pasar el mouse */
+  transform: translate(-50%, -50%) scale(1.05); /* Agranda el botón al pasar el mouse */
+}
+
+#boton-registrar:active {
+  --background: #004080; /* Color de fondo al hacer clic */
+  transform: translate(-50%, -50%) scale(0.95); /* Reduce el tamaño del botón al hacer clic */
 }

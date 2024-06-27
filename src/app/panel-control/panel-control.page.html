@@ -1,50 +1,93 @@
 <ion-app>
-  <ion-header></ion-header>
-
-  <ion-content [fullscreen]="true">
-    <!-- Video de fondo -->
-    <video autoplay muted loop id="video-background" preload="auto" onended="this.play()">
-      <source src="../assets/Videos/video3.mp4" type="video/mp4">
-    </video>
-
-    <!-- Contenedor principal -->
-    <div class="main-container">
-      <div class="camera-rectangle">
-        <!-- Contenido de la cámara aquí -->
-        <video #cameraFeed id="camera-feed" width="100%" height="100%" autoplay></video>
-      </div>
-
-      <div class="button-container">
-        <ion-button expand="block" class="button-registrar" (click)="registrar()">REGISTRAR</ion-button>
-        <ion-item class="button-labs">
-          <ion-label>Seleccionar Laboratorio</ion-label>
-          <ion-select (ionChange)="seleccionarLab($event.detail.value)">
-            <ion-select-option value="lab902">LAB902</ion-select-option>
-            <ion-select-option value="lab903">LAB903</ion-select-option>
-          </ion-select>
+  <ion-menu side="start" contentId="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menú</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item (click)="goToPanelControl()">
+          <ion-icon name="clipboard"></ion-icon>
+          <ion-label>Panel Control</ion-label>
         </ion-item>
-        <ion-button expand="block" class="infer-button" (click)="captureAndInfer()">Inferir</ion-button>
+        <ion-item (click)="goToEstadisticas()">
+          <ion-icon name="stats-chart"></ion-icon>
+          <ion-label>Estadísticas</ion-label>
+        </ion-item>
+        <ion-item (click)="goToListaClips()">
+          <ion-icon name="list"></ion-icon>
+          <ion-label>Lista Clips</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-toggle>
+          <ion-button>
+            <ion-icon name="menu"></ion-icon>
+            <span class="button-text">Menú</span>
+          </ion-button>
+        </ion-menu-toggle>
+      </ion-buttons>
+      <ion-title>SECURITYLAB</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Contenido principal -->
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-toggle>
+            <ion-menu-button></ion-menu-button>
+          </ion-menu-toggle>
+        </ion-buttons>
+        <ion-title>Instrucciones</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content [fullscreen]="true">
+      <!-- Video de fondo -->
+      <video autoplay muted loop id="video-background" preload="auto" onended="this.play()">
+        <source src="../assets/Videos/video3.mp4" type="video/mp4">
+      </video>
+    
+      <!-- Contenedor principal -->
+      <div class="main-container">
+        <div class="camera-rectangle">
+          <!-- Contenido de la cámara aquí -->
+          <video #cameraFeed id="camera-feed" width="100%" height="100%" autoplay></video>
+        </div>
+    
+        <!-- Campos para llenar -->
+        <div class="data-container">
+          <ion-item lines="none" class="custom-input">
+            <ion-label position="floating" class="data-label">Número de Laboratorio</ion-label>
+            <ion-input type="text" [(ngModel)]="numLab" class="data-input"></ion-input>
+          </ion-item>
+          
+          <ion-item lines="none" class="custom-input">
+            <ion-label position="floating" class="data-label">Profesor</ion-label>
+            <ion-input type="text" [(ngModel)]="profesor" class="data-input"></ion-input>
+          </ion-item>
+          
+          <ion-item lines="none" class="custom-input">
+            <ion-label position="floating" class="data-label">Turno</ion-label>
+            <ion-input type="text" [(ngModel)]="turno" class="data-input"></ion-input>
+          </ion-item>
+          
+          <ion-item lines="none" class="custom-input">
+            <ion-label position="floating" class="data-label">Curso</ion-label>
+            <ion-input type="text" [(ngModel)]="curso" class="data-input"></ion-input>
+          </ion-item>
+        </div>
+    
+        <!-- Botón de registro final -->
+        <ion-button id="boton-registrar" expand="block" (click)="registrarLab()">REGISTRAR</ion-button>
       </div>
-    </div>
-    <div class="button-container">
-      <ion-label class="panel-label">LISTA DE CLIPS SOSPECHOSOS</ion-label>
-    </div>
-    <ion-item>
-      <ion-label position="floating">Número de Laboratorio</ion-label>
-      <ion-input type="text" [(ngModel)]="numLab"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Profesor</ion-label>
-      <ion-input type="text" [(ngModel)]="profesor"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Turno</ion-label>
-      <ion-input type="text" [(ngModel)]="turno"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Curso</ion-label>
-      <ion-input type="text" [(ngModel)]="curso"></ion-input>
-      <ion-button (click)="registrarLab()">REGISTRAR</ion-button>
-    </ion-item>
-  </ion-content>
-</ion-app>
+    </ion-content>
+    

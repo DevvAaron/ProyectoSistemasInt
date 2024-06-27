@@ -1,14 +1,63 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Lista de Clips</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-app>
+  <ion-menu side="start" contentId="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menú</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item (click)="goToPanelControl()">
+          <ion-icon name="clipboard"></ion-icon>
+          <ion-label>Panel Control</ion-label>
+        </ion-item>
+        <ion-item (click)="goToEstadisticas()">
+          <ion-icon name="stats-chart"></ion-icon>
+          <ion-label>Estadísticas</ion-label>
+        </ion-item>
+        <ion-item (click)="goToListaClips()">
+          <ion-icon name="list"></ion-icon>
+          <ion-label>Lista Clips</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-toggle>
+          <ion-button>
+            <ion-icon name="menu"></ion-icon>
+            <span class="button-text">Menú</span>
+          </ion-button>
+        </ion-menu-toggle>
+      </ion-buttons>
+      <ion-title>SECURITYLAB</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Contenido principal -->
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-toggle>
+            <ion-menu-button></ion-menu-button>
+          </ion-menu-toggle>
+        </ion-buttons>
+        <ion-title>Instrucciones</ion-title>
+      </ion-toolbar>
+    </ion-header>
 
 <ion-content [fullscreen]="true">
+  <video autoplay muted loop id="video-background" preload="auto" onended="this.play()">
+    <source src="../assets/Videos/fondo2.mp4" type="video/mp4">
+  </video>
   <ion-grid id="tabla-clips">
     <ion-row>
       <ion-col>
-        <ion-header>NumLab:</ion-header>
+        <ion-header>NumLab</ion-header>
         <ion-list>
           <ion-item *ngFor="let lab of labs">
             <div>{{ lab.NumLab }}</div>
@@ -16,7 +65,7 @@
         </ion-list>
       </ion-col>
       <ion-col>
-        <ion-header>Profesor:</ion-header>
+        <ion-header>Profesor</ion-header>
         <ion-list>
           <ion-item *ngFor="let lab of labs">
             <div>{{ lab.Profesor }}</div>
@@ -24,7 +73,7 @@
         </ion-list>
       </ion-col>
       <ion-col>
-        <ion-header>Turno:</ion-header>
+        <ion-header>Turno</ion-header>
         <ion-list>
           <ion-item *ngFor="let lab of labs">
             <div>{{ lab.Turno }}</div>
@@ -32,7 +81,7 @@
         </ion-list>
       </ion-col>
       <ion-col>
-        <ion-header>Curso:</ion-header>
+        <ion-header>Curso</ion-header>
         <ion-list>
           <ion-item *ngFor="let lab of labs">
             <div>{{ lab.Curso }}</div>
@@ -41,6 +90,9 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-
-  <ion-button expand="full" (click)="generarPDF()">Generar PDF</ion-button>
+  <ion-button id="generarPDF" expand="block" (click)="generarPDF()">IMPRIMIR</ion-button>
+  <!-- <ion-button expand="full" (click)="generarPDF()">Generar PDF</ion-button> -->
 </ion-content>
+</div>
+</ion-app>
+

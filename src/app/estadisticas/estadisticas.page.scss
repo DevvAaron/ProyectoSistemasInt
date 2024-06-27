@@ -199,3 +199,61 @@ justify-content: center;
 align-items: center;
 background-color: transparent; /* Fondo transparente */
 }
+
+/* Estilos para el menú */
+ion-menu {
+  --width: 250px;
+  --background: #992222;
+  color: #fff;
+}
+
+/* Estilos para el ion-menu y sus elementos */
+ion-toolbar {
+  --background: #771818; /* Cambiar el color de fondo del toolbar en el menú */
+  --color: white; /* Cambia el color del texto en la barra de herramientas del menú */
+}
+
+ion-menu ion-content {
+  --background: #992222;
+}
+
+ion-menu ion-list {
+  --background: #992222;
+  padding: 0; /* Eliminar el relleno para evitar bordes internos */
+}
+
+ion-menu ion-item {
+  --background: #992222; /* Ajuste de color de fondo para cada elemento de la lista */
+  --color: #fff; /* Color de texto en los elementos de la lista del menú */
+  --padding-start: 20px; /* Ajuste del espacio interno */
+  --padding-end: 20px; /* Ajuste del espacio interno */
+  --inner-padding-top: 0; /* Eliminar relleno interno superior */
+  --inner-padding-bottom: 0; /* Eliminar relleno interno inferior */
+  border-bottom: 2px solid #992222; /* Línea inferior roja oscura */
+}
+
+ion-menu ion-item:last-child {
+  border-bottom: none; /* Eliminar borde inferior del último elemento */
+}
+
+ion-menu ion-item:hover {
+  --background: darken(#992222, 10%); /* Color de fondo al pasar el mouse */
+}
+
+ion-menu ion-item ion-label {
+  color: #fff; /* Color del texto dentro de los elementos de la lista */
+}
+
+ion-menu ion-item ion-icon {
+  color: #fff; /* Color del icono dentro de los elementos de la lista */
+}
+
+/* Ajustes para el botón de menú en la barra de herramientas */
+ion-menu-toggle ion-button {
+  color: #fff; /* Color del texto del botón de menú */
+}
+
+/* Estilos adicionales para el contenido principal */
+ion-content#main-content {
+  --background: #fff; /* Color de fondo del contenido principal */
+}

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ListaClipsService } from './lista-clips.service';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
+import { NavController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-lista-clips',
@@ -18,7 +19,7 @@ export class ListaClipsPage implements OnInit {
   turno: string = '';
   curso: string = '';
 
-  constructor(private listaClipsService: ListaClipsService) {}
+  constructor(private navCtrl: NavController, private menuCtrl: MenuController, private listaClipsService: ListaClipsService) {}
 
   ngOnInit() {
     this.cargarLabs();
@@ -43,8 +44,8 @@ export class ListaClipsPage implements OnInit {
         // Establecer los márgenes y calcular la posición de la tabla
         const marginLeft = 10; // Margen izquierdo
         const marginRight = pdf.internal.pageSize.width - marginLeft; // Margen derecho
-        const marginTop = 25; // Margen superior
-        const tableHeight = imgHeight + 60; // Altura de la tabla con título y texto adicional
+        const marginTop = 35; // Margen superior aumentado para dejar espacio
+        const tableHeight = imgHeight + 80; // Altura de la tabla con título y espacio adicional
         const marginBottom = pdf.internal.pageSize.height - tableHeight - marginTop; // Margen inferior
   
         // Agregar título
@@ -75,8 +76,24 @@ export class ListaClipsPage implements OnInit {
     }
   }
   
+  
   formatTime(timeValue: number): string {
     return timeValue < 10 ? '0' + timeValue : '' + timeValue;
+  }
+
+  goToPanelControl(){
+    this.navCtrl.navigateForward('/panel-control');
+  }
+  goToEstadisticas(){
+    this.navCtrl.navigateForward('/estadisticas');
+  }
+  goToListaClips(){
+    this.navCtrl.navigateForward('/lista-clips');
+  }
+
+  openMenu() {
+    this.menuCtrl.enable(true, 'start'); // Habilita la ventana deslizable
+    this.menuCtrl.open('start'); // Abre la ventana deslizable
   }
   
 }

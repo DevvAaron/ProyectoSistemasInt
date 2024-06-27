@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { RoboflowApiService } from '../roboflow-api.service';
 import { Platform } from '@ionic/angular';
 import { PanelControlService } from './panel-control.service';
+import { NavController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-panel-control',
@@ -21,7 +22,7 @@ export class PanelControlPage implements OnInit {
 
   @ViewChild('cameraFeed', { static: false }) cameraFeed!: ElementRef<HTMLVideoElement>;
 
-  constructor(private roboflowApiService: RoboflowApiService, private platform: Platform,
+  constructor(private navCtrl: NavController, private menuCtrl: MenuController, private roboflowApiService: RoboflowApiService, private platform: Platform,
     private panelControlService: PanelControlService) {}
 
     ngOnInit() {
@@ -95,6 +96,18 @@ export class PanelControlPage implements OnInit {
       console.error('Error: 2D context not available.');
     }
   }
+  goToPanelControl(){
+    this.navCtrl.navigateForward('/panel-control');
+  }
+  goToEstadisticas(){
+    this.navCtrl.navigateForward('/estadisticas');
+  }
+  goToListaClips(){
+    this.navCtrl.navigateForward('/lista-clips');
+  }
 
-
+  openMenu() {
+    this.menuCtrl.enable(true, 'start'); // Habilita la ventana deslizable
+    this.menuCtrl.open('start'); // Abre la ventana deslizable
+  }
 }
