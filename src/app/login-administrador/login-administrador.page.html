@@ -1,26 +1,14 @@
 <ion-content [fullscreen]="true">
   <video autoplay muted loop id="video-background" preload="auto" onended="this.play()">
-    <source src="../assets/Videos/fondo1.mp4" type="video/mp4">
+    <source src="../assets/Videos/video1.mp4" type="video/mp4">
   </video>
 
-  <div class="button-container">
-    <ion-label class="panel-label">REGISTRO USUARIO</ion-label>
+  <div class="login-container">
+    <form [formGroup]="formAdministrador">
+      <ion-input class="data-input" formControlName="usuario" placeholder="Ingrese su usuario" style="top: 50vh;"></ion-input>
+      <ion-input class="data-input" formControlName="clave" type="password" placeholder="Ingrese su clave" style="top: 56vh;"></ion-input>
+      <ion-input class="data-input" formControlName="correo" placeholder="Ingrese su correo" style="top: 62vh;"></ion-input>
+      <ion-button expand="block" (click)="registrarUsuario()" style="top: 70vh;">Registrar</ion-button>
+    </form>
   </div>
-  <!-- <ion-item>
-    <ion-label position="floating">Id</ion-label>
-    <ion-input type="text" [(ngModel)]="id"></ion-input>
-  </ion-item> -->
-  <ion-item>
-    <ion-label position="floating">Usuario</ion-label>
-    <ion-input type="text" [(ngModel)]="usuario"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Clave</ion-label>
-    <ion-input type="text" [(ngModel)]="clave"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Correo</ion-label>
-    <ion-input type="text" [(ngModel)]="correo"></ion-input>
-  </ion-item>
-  <ion-button (click)="registrarUsuario()">REGISTRAR</ion-button>
 </ion-content>

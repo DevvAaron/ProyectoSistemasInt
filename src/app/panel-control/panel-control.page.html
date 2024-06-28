@@ -13,11 +13,11 @@
         </ion-item>
         <ion-item (click)="goToEstadisticas()">
           <ion-icon name="stats-chart"></ion-icon>
-          <ion-label>Estadísticas</ion-label>
+          <ion-label>Estadísticas</ion-label> <!-- Corrección aquí -->
         </ion-item>
         <ion-item (click)="goToListaClips()">
           <ion-icon name="list"></ion-icon>
-          <ion-label>Lista Clips</ion-label>
+          <ion-label>Lista Clips</ion-label> <!-- Corrección aquí -->
         </ion-item>
       </ion-list>
     </ion-content>
@@ -67,22 +67,23 @@
         <div class="data-container">
           <ion-item lines="none" class="custom-input">
             <ion-label position="floating" class="data-label">Número de Laboratorio</ion-label>
-            <ion-input type="text" [(ngModel)]="numLab" class="data-input"></ion-input>
+            <ion-input type="text" placeholder="Número de Laboratorio" [(ngModel)]="numLab" class="data-input"></ion-input>
           </ion-item>
           
           <ion-item lines="none" class="custom-input">
             <ion-label position="floating" class="data-label">Profesor</ion-label>
-            <ion-input type="text" [(ngModel)]="profesor" class="data-input"></ion-input>
+            <ion-input type="text" placeholder="Profesor" [(ngModel)]="profesor" class="data-input"></ion-input>
+            
           </ion-item>
           
           <ion-item lines="none" class="custom-input">
             <ion-label position="floating" class="data-label">Turno</ion-label>
-            <ion-input type="text" [(ngModel)]="turno" class="data-input"></ion-input>
+            <ion-input type="text" placeholder="Turno" [(ngModel)]="turno" class="data-input"></ion-input>
           </ion-item>
           
           <ion-item lines="none" class="custom-input">
             <ion-label position="floating" class="data-label">Curso</ion-label>
-            <ion-input type="text" [(ngModel)]="curso" class="data-input"></ion-input>
+            <ion-input type="text" placeholder="Curso" [(ngModel)]="curso" class="data-input"></ion-input>
           </ion-item>
         </div>
     
@@ -90,4 +91,5 @@
         <ion-button id="boton-registrar" expand="block" (click)="registrarLab()">REGISTRAR</ion-button>
       </div>
     </ion-content>
-    
+  </div>
+</ion-app>

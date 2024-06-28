@@ -46,15 +46,15 @@ body {
   margin-top: -245px;
 }
 
-/* Estilos para los botones */
-.button-registrar, .infer-button {
-  width: 200px;
-}
+// /* Estilos para los botones */
+// .button-registrar, .infer-button {
+//   width: 200px;
+// }
 
-/* Estilos para la selección de laboratorio */
-.button-labs {
-  width: 200px;
-}
+// /* Estilos para la selección de laboratorio */
+// .button-labs {
+//   width: 200px;
+// }
 
 /* Ajuste para eliminar el fondo negro de ion-app */
 ion-app {
@@ -64,6 +64,8 @@ ion-app {
 ion-content {
   --background: transparent !important; /* Fondo transparente para ion-content */
 }
+
+
 
 .custom-input {
   --background: transparent; /* Fondo transparente */
@@ -78,7 +80,7 @@ ion-content {
   margin-right: 250px;
 
   /* Opcional: Ajustes adicionales */
-  --highlight-height: 0; /* Altura del resaltado (si se desea eliminar) */
+
 }
 
 /* Estilos personalizados para los botones */
@@ -183,43 +185,45 @@ ion-item {
   --padding-end: 10px; /* Espacio de finalización personalizado */
 }
 
-ion-label {
-  font-size: 16px; /* Tamaño de fuente para etiquetas */
+// ion-label {
+//   font-size: 16px; /* Tamaño de fuente para etiquetas */
   
-}
+// }
 
-ion-input {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 12px;
-  font-size: 16px;
-  margin-bottom: 15px;
-  width: calc(100% - 24px);
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
+
+.custom-input ion-input {
+  border: 1px solid #000000; /* Borde del input */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 12px; /* Espaciado interior */
+  font-size: 16px; /* Tamaño de la fuente del input */
+  margin-bottom: 10px; /* Espaciado inferior */
+  width: calc(100% - 24px); /* Ancho ajustado */
+  background-color: #fff; /* Color de fondo */
+  box-shadow: 0 2px 4px rgba(235, 39, 39, 0.1); /* Sombra */
+  transition: none; /* Elimina cualquier transición */
   position: relative; /* Posicionamiento relativo */
-  top: -20px; /* Ejemplo de ajuste vertical */
+  top: -20px; /* Ajuste vertical */
 }
 
-ion-input:focus {
-  border-color: #4CAF50; /* Color del borde al enfocar */
-  box-shadow: 0 0 8px rgba(76, 175, 80, 0.6); /* Sombra al enfocar */
-  outline: none; /* Elimina el contorno al enfocar */
-}
+
+// ion-input:focus {
+//   border-color: #4CAF50; /* Color del borde al enfocar */
+//   box-shadow: 0 0 8px rgba(76, 175, 80, 0.6); /* Sombra al enfocar */
+//   outline: none; /* Elimina el contorno al enfocar */
+// }
 
 .custom-input ion-label {
   font-size: 16px; /* Ajusta el tamaño de la fuente según sea necesario */
   color: black; /* Color del texto */
 }
 
-.custom-input ion-input {
-  border: 1px solid #ccc; /* Borde del input */
-  border-radius: 5px; /* Bordes redondeados */
-  padding: 8px; /* Espaciado interior */
-  font-size: 16px; /* Tamaño de la fuente del input */
-  color: black; /* Color del texto en negro */
-}
+// .custom-input ion-input {
+//   border: 1px solid #ccc; /* Borde del input */
+//   border-radius: 5px; /* Bordes redondeados */
+//   padding: 8px; /* Espaciado interior */
+//   font-size: 16px; /* Tamaño de la fuente del input */
+//   color: black; /* Color del texto en negro */
+// }
 
 .data-label {
   font-weight: bold; /* Texto en negrita */
@@ -236,6 +240,7 @@ ion-input:focus {
   color: black; /* Color del texto en negro */
 }
 
+EL PROBLEMA AQUI
 .custom-input ion-label.data-label {
   font-size: 18px;
   color: #ffffff;
@@ -262,6 +267,7 @@ ion-input:focus {
   --padding-end: 10px;
 }
 
+EL PROBLEMA AQUI
 .data-label {
   color: rgb(0, 0, 0);
   margin-bottom: 15px; /* Añade espacio entre el label y el input */
@@ -290,4 +296,10 @@ ion-input:focus {
 #boton-registrar:active {
   --background: #004080; /* Color de fondo al hacer clic */
   transform: translate(-50%, -50%) scale(0.95); /* Reduce el tamaño del botón al hacer clic */
+}
+
+.custom-input {
+  .data-input {
+    padding: 10px;  /* Ajusta el valor según sea necesario */
+  }
 }
