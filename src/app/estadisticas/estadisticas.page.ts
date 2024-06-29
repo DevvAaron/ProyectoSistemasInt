@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, MenuController } from '@ionic/angular';
 import { Chart, registerables } from 'chart.js';
 import { EstadisticasService } from './estadisticas.service';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-estadisticas',
@@ -110,10 +112,6 @@ export class EstadisticasPage implements OnInit {
           options: {
             responsive: true,
             plugins: {
-              legend: {
-                position: 'top',
-                align: 'center',
-              },
               title: {
                 display: true,
                 text: title,
@@ -125,6 +123,9 @@ export class EstadisticasPage implements OnInit {
                   top: 10,
                   bottom: 30
                 }
+              },
+              legend: {
+                display: false  // Aquí desactivamos la leyenda
               }
             }
           }
@@ -136,7 +137,7 @@ export class EstadisticasPage implements OnInit {
       console.error('No se encontró el elemento canvas con ID "pie-chart".');
     }
   }
-
+  
   generateBarChart(labels: string[], valores: number[], title: string) {
     const canvas = document.getElementById('bar-chart') as HTMLCanvasElement;
     if (canvas) {
@@ -157,10 +158,6 @@ export class EstadisticasPage implements OnInit {
           options: {
             responsive: true,
             plugins: {
-              legend: {
-                position: 'top',
-                align: 'center',
-              },
               title: {
                 display: true,
                 text: title,
@@ -172,6 +169,9 @@ export class EstadisticasPage implements OnInit {
                   top: 10,
                   bottom: 30
                 }
+              },
+              legend: {
+                display: false  // Desactivar la leyenda
               }
             }
           }
@@ -183,7 +183,7 @@ export class EstadisticasPage implements OnInit {
       console.error('No se encontró el elemento canvas con ID "bar-chart".');
     }
   }
-
+  
   generateLineChart(labels: string[], valores: number[], title: string) {
     const canvas = document.getElementById('line-chart') as HTMLCanvasElement;
     if (canvas) {
@@ -203,11 +203,12 @@ export class EstadisticasPage implements OnInit {
           },
           options: {
             responsive: true,
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            },
             plugins: {
-              legend: {
-                position: 'top',
-                align: 'center',
-              },
               title: {
                 display: true,
                 text: title,
@@ -219,14 +220,9 @@ export class EstadisticasPage implements OnInit {
                   top: 10,
                   bottom: 30
                 }
-              }
-            },
-            scales: {
-              y: {
-                beginAtZero: true,
-                ticks: {
-                  precision: 0
-                }
+              },
+              legend: {
+                display: false  // Desactivar la leyenda
               }
             }
           }
@@ -238,14 +234,14 @@ export class EstadisticasPage implements OnInit {
       console.error('No se encontró el elemento canvas con ID "line-chart".');
     }
   }
-
+  
   generateHorizontalBarChart(labels: string[], valores: number[], title: string) {
-    const canvas = document.getElementById('fourth-chart') as HTMLCanvasElement; // Cambiado a "fourth-chart"
+    const canvas = document.getElementById('fourth-chart') as HTMLCanvasElement;
     if (canvas) {
       const ctx = canvas.getContext('2d');
       if (ctx) {
         new Chart(ctx, {
-          type: 'bar', // Cambiado de 'horizontalBar' a 'bar' debido a limitaciones de TypeScript
+          type: 'bar',
           data: {
             labels: labels,
             datasets: [{
@@ -257,13 +253,9 @@ export class EstadisticasPage implements OnInit {
             }]
           },
           options: {
-            indexAxis: 'y', // Indicar que el eje principal es el eje Y para hacerlo horizontal
+            indexAxis: 'y',
             responsive: true,
             plugins: {
-              legend: {
-                position: 'top',
-                align: 'center',
-              },
               title: {
                 display: true,
                 text: title,
@@ -275,14 +267,9 @@ export class EstadisticasPage implements OnInit {
                   top: 10,
                   bottom: 30
                 }
-              }
-            },
-            scales: {
-              x: {
-                beginAtZero: true,
-                ticks: {
-                  precision: 0
-                }
+              },
+              legend: {
+                display: false  // Desactivar la leyenda
               }
             }
           }
@@ -294,16 +281,38 @@ export class EstadisticasPage implements OnInit {
       console.error('No se encontró el elemento canvas con ID "fourth-chart".');
     }
   }
+  
 
-  generarColoresAleatorios(cantidad: number): string[] {
+  generarColoresAleatorios(length: number): string[] {
     const colores: string[] = [];
-    for (let i = 0; i < cantidad; i++) {
+    for (let i = 0; i < length; i++) {
       const color = `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 0.2)`;
       colores.push(color);
     }
     return colores;
   }
 
+  imprimirPDF() {
+    const doc = new jsPDF('p', 'mm', 'a4');
+    const charts = ['pie-chart', 'bar-chart', 'line-chart', 'fourth-chart'];
+    let promises = charts.map((chartId, index) => {
+      const canvas = document.getElementById(chartId) as HTMLCanvasElement;
+      return html2canvas(canvas).then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const imgProps = doc.getImageProperties(imgData);
+        const pdfWidth = doc.internal.pageSize.getWidth();
+        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+        if (index !== 0) {
+          doc.addPage();
+        }
+        doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      });
+    });
+
+    Promise.all(promises).then(() => {
+      doc.save('graficas.pdf');
+    });
+  }
   goToPanelControl() {
     this.navCtrl.navigateForward('/panel-control');
   }
@@ -316,3 +325,4 @@ export class EstadisticasPage implements OnInit {
     this.navCtrl.navigateForward('/lista-clips');
   }
 }
+

@@ -117,21 +117,21 @@ app.post('/registrar-lab', (req, res) => {
   });
 });
 
-// // Ruta para registrar un usuario
-// app.post('/registrar-usuario', (req, res) => {
-//   console.log('Datos recibidos:', req.body); // Verifica los datos recibidos
-//   const { Id, Usuario, Clave, Correo } = req.body;
-//   const sql = `INSERT INTO Usuarios (Id, Usuario, Clave, Correo) VALUES ('${Id}', '${Usuario}', '${Clave}', '${Correo}')`;
-//   db.query(sql, (err, result) => {
-//     if (err) {
-//       console.error('Error al registrar usuario:', err); // Muestra errores de inserción
-//       res.status(500).send('Error al registrar usuario');
-//       return;
-//     }
-//     console.log('Usuario registrado:', result); // Verifica el resultado de la inserción
-//     res.send('Usuario registrado exitosamente');
-//   });
-// });
+// Ruta para registrar un usuario
+app.post('/registrar-usuario', (req, res) => {
+  console.log('Datos recibidos:', req.body); // Verifica los datos recibidos
+  const { Id, Usuario, Clave, Correo } = req.body;
+  const sql = `INSERT INTO Usuarios (Id, Usuario, Clave, Correo) VALUES ('${Id}', '${Usuario}', '${Clave}', '${Correo}')`;
+  db.query(sql, (err, result) => {
+    if (err) {
+      console.error('Error al registrar usuario:', err); // Muestra errores de inserción
+      res.status(500).send('Error al registrar usuario');
+      return;
+    }
+    console.log('Usuario registrado:', result); // Verifica el resultado de la inserción
+    res.send('Usuario registrado exitosamente');
+  });
+});
 
 // Ruta para registrar un laboratorio
 app.post('/registrar-lab', (req, res) => {

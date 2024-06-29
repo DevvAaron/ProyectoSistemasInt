@@ -1,20 +1,17 @@
 /* Custom styles for video background */
-#video-background {
-  /* tus estilos actuales para el video */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-  /* aplica la animación */
-  animation: moveBackground 10s linear infinite alternate;
-}
-
 ion-content {
-  position: relative;
-  z-index: 1; /* Ensure the content is in front of the video */
+  --background: transparent; // Asegura que el fondo de ion-content sea transparente
+
+  #video-background {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1000;
+  }
 }
 
 .button-container {
@@ -27,15 +24,6 @@ ion-content {
   z-index: 1;
   margin-top: 10vh; /* Ajusta la distancia desde la parte superior */
 }
-
-
-// .data-label {
-//   width: 25%;
-//   font-weight: bold;
-//   text-align: center;
-//   transform: translate(-220px, -160px); /* Mueve el input 50px hacia la derecha */
-//   padding: 20px; /* Opcional: Añade un poco de espacio interno para que el borde no esté pegado al texto */
-// }
 
 ion-grid{
   transform: translate(0px, 120px);
@@ -217,4 +205,29 @@ ion-content#main-content {
   font-size: 24px;
   font-weight: bold;
   color: rgb(255, 255, 255); /* Corregido el color del texto */
+}
+
+#boton-imprimir {
+  position: absolute; /* Para mover el botón libremente */
+  top: 50%; /* Ajusta la posición vertical al 50% del contenedor padre */
+  left: 50%; /* Ajusta la posición horizontal al 50% del contenedor padre */
+  transform: translate(-50%, -50%); /* Centra el botón en las coordenadas especificadas */
+  width: 300px; /* Ancho del botón */
+  height: 60px; /* Altura del botón */
+  --background: #000000; /* Color de fondo del botón */
+  --color: #ffffff; /* Color del texto del botón */
+  font-size: 18px; /* Tamaño de la fuente */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+}
+
+#boton-imprimir:hover {
+  --background: #0056b3; /* Color de fondo al pasar el mouse */
+  transform: translate(-50%, -50%) scale(1.05); /* Agranda el botón al pasar el mouse */
+}
+
+#boton-imprimir:active {
+  --background: #004080; /* Color de fondo al hacer clic */
+  transform: translate(-50%, -50%) scale(0.95); /* Reduce el tamaño del botón al hacer clic */
 }

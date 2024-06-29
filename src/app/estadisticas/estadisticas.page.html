@@ -53,12 +53,18 @@
       </div>
     </div>
 
+    <!-- Espacio entre gráficos y botón -->
+    <div style="height: 30px;"></div>
+
     <!-- Contenedor del gráfico de barras -->
     <div class="main-container">
       <div class="chart-container">
         <canvas id="bar-chart"></canvas>
       </div>
     </div>
+
+    <!-- Espacio entre gráficos y botón -->
+    <div style="height: 30px;"></div>
 
     <!-- Contenedor del gráfico lineal -->
     <div class="main-container">
@@ -67,6 +73,9 @@
       </div>
     </div>
 
+    <!-- Espacio entre gráficos y botón -->
+    <div style="height: 30px;"></div>
+
     <!-- Contenedor del cuarto gráfico -->
     <div class="main-container">
       <div class="chart-container">
@@ -74,5 +83,13 @@
       </div>
     </div>
 
+    <!-- Espacio final entre el último gráfico y el botón -->
+    <div style="height: 70px;"></div>
+
+    <!-- Botón de imprimir -->
+    <div class="main-container">
+      <ion-button id="boton-imprimir" expand="block" (click)="imprimirPDF()">IMPRIMIR</ion-button>
+    </div>
+    <div style="height: 70px;"></div>
   </ion-content>
 </ion-app>
