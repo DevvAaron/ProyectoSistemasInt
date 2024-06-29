@@ -10,27 +10,23 @@ export class EstadisticasService {
 
   constructor(private http: HttpClient) {}
 
-  getUsuarios(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/usuarios`);
+  getProfesores(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/Labs`);
   }
 
-  getLabs(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/labs`);
+  getCursos(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/Labs`);
   }
 
-  getClips(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/clips`);
+  getIncidentesPorTurnos(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/Labs`);
   }
-  getProfesorRepetidos(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/Profesorrepetidos`);
+
+  getLaboratorios(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/Labs`);
   }
-  getCursosIncidentes(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/Cursosincidentes`);
-  }
-  getLabsConIncidentes(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/LabsconIncidentes`);
-  }
-  getTurnosConIncidentes(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/TurnosconIncidentes`);
-  }
+  
 }
+
+
+

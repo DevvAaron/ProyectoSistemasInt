@@ -24,63 +24,55 @@
     </ion-content>
   </ion-menu>
 
+  <!-- Encabezado principal -->
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-toggle>
+          <ion-button>
+            <ion-icon name="menu"></ion-icon>
+            <span class="button-text">Menú</span>
+          </ion-button>
+        </ion-menu-toggle>
+      </ion-buttons>
+      <ion-title>SECURITYLAB</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
   <!-- Contenido principal -->
-  <div class="ion-page" id="main-content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-menu-toggle>
-            <ion-button>
-              <ion-icon name="menu"></ion-icon>
-              <span class="button-text">Menú</span>
-            </ion-button>
-          </ion-menu-toggle>
-        </ion-buttons>
-        <ion-title>SECURITYLAB</ion-title>
-      </ion-toolbar>
-    </ion-header>
+  <ion-content id="main-content" [fullscreen]="true">
+    <!-- Video de fondo -->
+    <video autoplay muted loop id="video-background" preload="auto" onended="this.play()">
+      <source src="../assets/Videos/fondo2.mp4" type="video/mp4">
+    </video>
 
-    <ion-content [fullscreen]="true">
-      <video autoplay muted loop id="video-background" preload="auto" onended="this.play()">
-        <source src="../assets/Videos/fondo2.mp4" type="video/mp4">
-      </video>
+    <!-- Contenedor del gráfico de torta -->
+    <div class="main-container">
+      <div class="chart-container">
+        <canvas id="pie-chart"></canvas>
+      </div>
+    </div>
 
-      <ion-grid class="contenido">
-        <div class="chart-container">
-           <div class="chart-text">Profesores con Incidentes</div>
-           <canvas class="PO" id="investments-chart" #investmentsChart></canvas>
-        </div>
-      </ion-grid>
-    
-      <ion-grid class="contenido1">
-        <div class="chart-container1">
-            <canvas class="PO1" id="investments1-chart" #investments1Chart></canvas>
-            <div class="chart-text1" style="text-align:center;">Cursos con Incidentes</div>
-        </div>
-      </ion-grid>
-    
-      <ion-grid class="contenido2">
-        <div class="chart-container2">
-          <canvas class="PO2" id="investments2-chart" #investments2Chart></canvas>
-          <div class="chart-text2" style="text-align:center;">Laboratorio con Incidentes</div>
-        </div>
-      </ion-grid>
-    
-      <ion-grid class="contenido3">
-        <div class="chart-container3">
-          <canvas class="PO3" id="investments3-chart" #investments3Chart></canvas>
-          <div class="chart-text3" style="text-align:center;">Turnos con Incidentes</div>
-        </div>
-      </ion-grid>
-      
-      <ion-grid>
-        <!-- Botón Imprimir -->
-        <ion-row>
-          <ion-col>
-            <ion-button class="bot" expand="full" (click)="generatePDF()">Descargar</ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-content>
-  </div>
+    <!-- Contenedor del gráfico de barras -->
+    <div class="main-container">
+      <div class="chart-container">
+        <canvas id="bar-chart"></canvas>
+      </div>
+    </div>
+
+    <!-- Contenedor del gráfico lineal -->
+    <div class="main-container">
+      <div class="chart-container">
+        <canvas id="line-chart"></canvas>
+      </div>
+    </div>
+
+    <!-- Contenedor del cuarto gráfico -->
+    <div class="main-container">
+      <div class="chart-container">
+        <canvas id="fourth-chart"></canvas>
+      </div>
+    </div>
+
+  </ion-content>
 </ion-app>
