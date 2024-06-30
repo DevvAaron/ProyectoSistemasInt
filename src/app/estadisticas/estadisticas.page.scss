@@ -168,7 +168,7 @@ ion-content#main-content {
   max-width: 800px;
   height: 80%;
   margin: 20px auto 0; /* Cambiado el margen superior a 20px para separarlo */
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(255, 255, 255, 0.9);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -230,4 +230,22 @@ ion-content#main-content {
 #boton-imprimir:active {
   --background: #004080; /* Color de fondo al hacer clic */
   transform: translate(-50%, -50%) scale(0.95); /* Reduce el tamaño del botón al hacer clic */
+}
+
+
+.main-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.chart-container {
+  width: 100%;
+  height: auto;
+  page-break-inside: avoid;
+}
+
+canvas {
+  width: 100% !important;
+  height: auto !important;
 }

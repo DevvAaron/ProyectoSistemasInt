@@ -47,7 +47,7 @@
     </video>
 
     <!-- Contenedor del gráfico de torta -->
-    <div class="main-container">
+    <div class="main-container" id="estadisticas">
       <div class="chart-container">
         <canvas id="pie-chart"></canvas>
       </div>
@@ -57,7 +57,7 @@
     <div style="height: 30px;"></div>
 
     <!-- Contenedor del gráfico de barras -->
-    <div class="main-container">
+    <div class="main-container" id="bar-container">
       <div class="chart-container">
         <canvas id="bar-chart"></canvas>
       </div>
@@ -67,7 +67,7 @@
     <div style="height: 30px;"></div>
 
     <!-- Contenedor del gráfico lineal -->
-    <div class="main-container">
+    <div class="main-container" id="line-container">
       <div class="chart-container">
         <canvas id="line-chart"></canvas>
       </div>
@@ -77,7 +77,7 @@
     <div style="height: 30px;"></div>
 
     <!-- Contenedor del cuarto gráfico -->
-    <div class="main-container">
+    <div class="main-container" id="fourth-container">
       <div class="chart-container">
         <canvas id="fourth-chart"></canvas>
       </div>
@@ -88,7 +88,7 @@
 
     <!-- Botón de imprimir -->
     <div class="main-container">
-      <ion-button id="boton-imprimir" expand="block" (click)="imprimirPDF()">IMPRIMIR</ion-button>
+      <ion-button id="boton-imprimir" expand="block" (click)="imprimir()">IMPRIMIR</ion-button>
     </div>
     <div style="height: 70px;"></div>
   </ion-content>
