@@ -6,9 +6,11 @@ const cors = require('cors');
 const app = express();
 const port = 3000; // Puedes cambiar el puerto si es necesario
 
-app.use(cors());
+// Middleware
+app.use(cors()); // Habilita CORS para permitir solicitudes desde cualquier origen
 app.use(bodyParser.json()); // Middleware para parsear JSON en las solicitudes
 
+// Conexión a la base de datos
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -23,20 +25,10 @@ db.connect((err) => {
   console.log('Conexión a la base de datos establecida');
 });
 
+// Rutas
 // Ruta para obtener usuarios
 app.get('/usuarios', (req, res) => {
   const sql = 'SELECT * FROM Usuarios';
-  db.query(sql, (err, result) => {
-    if (err) {
-      throw err;
-    }
-    res.json(result);
-  });
-});
-
-// Ruta para obtener labs
-app.get('/labs', (req, res) => {
-  const sql = 'SELECT * FROM Labs';
   db.query(sql, (err, result) => {
     if (err) {
       throw err;
@@ -56,46 +48,62 @@ app.get('/clips', (req, res) => {
   });
 });
 
-app.get('/Profesorrepetidos', (req, res) => {
-  const sql = `SELECT * FROM ProfesorRepetidos`;
-  db.query(sql, (err, result) => {
-    if (err) {
-      throw err;
-    }
-    res.json(result);
-  });
-});
+// Ruta para obtener labs (incluyendo la lógica de búsqueda)
+app.get('/labs', (req, res) => {
+  let sql = 'SELECT * FROM Labs';
+  const { profesor, laboratorio, turno } = req.query;
 
-app.get('/Cursosincidentes', (req, res) => {
-  const sql = `SELECT * FROM CursosIncidentes`;
+  let conditions = [];
+  if (profesor) {
+    conditions.push(`Profesor LIKE '%${profesor}%'`);
+  }
+  if (laboratorio) {
+    conditions.push(`NumLab = ${mysql.escape(laboratorio)}`);
+  }
+  if (turno) {
+    conditions.push(`Turno LIKE '%${turno}%'`);
+  }
+
+  if (conditions.length > 0) {
+    sql += ' WHERE ' + conditions.join(' AND ');
+  }
+
+  console.log('Consulta SQL generada:', sql); // Debugging de la consulta SQL
+
   db.query(sql, (err, result) => {
     if (err) {
-      console.error('Error al obtener datos de Cursosincidentes:', err);
-      res.status(500).send('Error interno del servidor');
+      console.error('Error al ejecutar la consulta SQL:', err);
+      res.status(500).json({ error: 'Error interno del servidor al procesar la consulta' });
       return;
     }
     res.json(result);
   });
 });
 
-app.get('/LabsconIncidentes', (req, res) => {
-  const sql = `SELECT * FROM LabsConIncidentes`;
+// Ruta para búsqueda avanzada de labs
+app.post('/search', (req, res) => {
+  const filters = req.body;
+
+  // Lógica de búsqueda basada en los filtros
+  let sql = 'SELECT * FROM Labs';
+  let conditions = [];
+  if (filters.profesor) {
+    conditions.push(`Profesor LIKE '%${filters.profesor}%'`);
+  }
+  if (filters.laboratorio) {
+    conditions.push(`NumLab = ${mysql.escape(filters.laboratorio)}`);
+  }
+  if (filters.turno) {
+    conditions.push(`Turno LIKE '%${filters.turno}%'`);
+  }
+
+  if (conditions.length > 0) {
+    sql += ' WHERE ' + conditions.join(' AND ');
+  }
+
   db.query(sql, (err, result) => {
     if (err) {
       throw err;
-    }
-    res.json(result);
-  });
-});
-
-app.get('/TurnosconIncidentes', (req, res) => {
-  // Lógica para obtener datos de TurnosconIncidentes desde la base de datos
-  const sql = 'SELECT * FROM TurnosConIncidentes';
-  db.query(sql, (err, result) => {
-    if (err) {
-      console.error('Error en consulta TurnosConIncidentes:', err);
-      res.status(500).send('Error interno del servidor');
-      return;
     }
     res.json(result);
   });
