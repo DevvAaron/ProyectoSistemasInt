@@ -244,13 +244,17 @@ ion-content#main-content {
   --background: rgb(109, 31, 31); /* Cambia el color de fondo del ion-item dentro de ion-col */
 }
 
-#generarPDF {
+ion-button {
+  z-index: 2;
+  margin-top: 20px;
+}
+#boton-imprimir {
   position: absolute; /* Para mover el botón libremente */
-  top: 11%; /* Ajusta la posición vertical */
-  left: 88%; /* Ajusta la posición horizontal */
-  transform: translate(-50%, -50%); /* Centra el botón en las coordenadas especificadas */
-  width: 240px; /* Ancho del botón */
-  height: 50px; /* Altura del botón */
+  bottom: -110%; /* Ajusta la posición vertical al 20px desde la parte inferior */
+  left: 50%; /* Ajusta la posición horizontal al 50% del contenedor padre */
+  transform: translateX(-50%); /* Centra el botón horizontalmente */
+  width: 300px; /* Ancho del botón */
+  height: 60px; /* Altura del botón */
   --background: #000000; /* Color de fondo del botón */
   --color: #ffffff; /* Color del texto del botón */
   font-size: 18px; /* Tamaño de la fuente */
@@ -259,12 +263,106 @@ ion-content#main-content {
   transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
 }
 
-#generarPDF:hover {
+#boton-imprimir:hover {
   --background: #0056b3; /* Color de fondo al pasar el mouse */
-  transform: translate(-50%, -50%) scale(1.05); /* Agranda el botón al pasar el mouse */
+  transform: translateX(-50%) scale(1.05); /* Agranda el botón al pasar el mouse */
 }
 
-#generarPDF:active {
+#boton-imprimir:active {
   --background: #004080; /* Color de fondo al hacer clic */
-  transform: translate(-50%, -50%) scale(0.95); /* Reduce el tamaño del botón al hacer clic */
+  transform: translateX(-50%) scale(0.95); /* Reduce el tamaño del botón al hacer clic */
+}
+
+// Contenedor de la búsqueda
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: transparent;
+  padding: 10px;
+  box-shadow: none;
+}
+
+// Contenedor de la búsqueda por categoría
+.search-category {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  padding: 0;
+  background-color: #f0f0f0; // Fondo gris claro
+  border-radius: 25px; // Bordes redondeados
+  border: 2px solid #ccc; // Contorno gris claro
+  height: 50px; // Altura ajustada
+  min-width: 350px; // Ancho mínimo ajustado
+}
+
+// Estilo del ion-label
+.rounded-label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000; // Color del texto
+  background-color: transparent;
+  margin-right: 10px;
+  padding: 5px 10px;
+  border-radius: 25px; // Bordes redondeados
+}
+
+// Estilo del ion-select
+.rounded-select {
+  --background: transparent; // Fondo transparente
+  --color: #000; // Texto negro
+  --placeholder-color: #999; // Color del placeholder gris
+  border-radius: 25px; // Bordes redondeados
+  border: none;
+  padding: 5px 10px;
+  height: 50px; // Altura ajustada
+}
+
+// Estilo del ion-searchbar como buscador de Google
+.google-searchbar {
+  --background: #fff; // Fondo blanco
+  --box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); // Sombra ligera
+  --border-radius: 25px; // Bordes redondeados
+  --height: 50px; // Altura ajustada
+  --placeholder-color: #999; // Color del placeholder
+  --icon-color: #666; // Color del icono
+  margin-right: 10px;
+  width: 750px; // Ancho del searchbar ajustado
+
+  input {
+    font-size: 14px;
+    padding-left: 16px;
+  }
+
+  .searchbar-input-container {
+    border-radius: 25px; // Bordes redondeados del contenedor
+  }
+
+  .searchbar-clear-icon {
+    display: none; // Ocultar icono de limpiar
+  }
+}
+
+// Estilo del ion-toolbar personalizado
+.custom-toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  margin-bottom: 10px; // Reducir el margen inferior para acercar la tabla
+}
+
+// Ajuste de la tabla para que esté más cerca de la barra de herramientas
+#tabla-clips {
+  margin-top: 10px; // Reducir el margen superior de la tabla
+}
+
+// Opcional: Ajuste del botón de búsqueda
+ion-button {
+  margin-left: 10px;
+  border-radius: 25px; // Bordes redondeados del botón
 }

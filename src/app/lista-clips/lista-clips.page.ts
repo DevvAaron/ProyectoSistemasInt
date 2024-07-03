@@ -1,8 +1,11 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ListaClipsService } from './lista-clips.service';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 import { NavController, MenuController } from '@ionic/angular';
+import { ListaClipsService } from './lista-clips.service'; // Asegúrate de importar correctamente tu servicio
+import { catchError, map } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-lista-clips',
@@ -10,27 +13,73 @@ import { NavController, MenuController } from '@ionic/angular';
   styleUrls: ['./lista-clips.page.scss'],
 })
 export class ListaClipsPage implements OnInit {
-  usuarios: any[] = [];
   labs: any[] = [];
-  clips: any[] = [];
+  filteredLabs: any[] = [];
+  searchCriteria: string = 'profesor';
+  searchTerm: string = '';
+  message: string = '';
 
-  numLab: string = '';
-  profesor: string = '';
-  turno: string = '';
-  curso: string = '';
-
-  constructor(private navCtrl: NavController, private menuCtrl: MenuController, private listaClipsService: ListaClipsService) {}
+  constructor(
+    private navCtrl: NavController,
+    private menuCtrl: MenuController,
+    private listaClipsService: ListaClipsService
+  ) {}
 
   ngOnInit() {
     this.cargarLabs();
   }
 
   cargarLabs() {
-    this.listaClipsService.getLabs().subscribe(data => {
-      console.log('Labs:', data);
-      this.labs = data;
-    });
+    this.listaClipsService.getLabs().pipe(
+      map((data: any) => {
+        console.log('Labs:', data);
+        this.labs = data;
+        this.filteredLabs = [...this.labs]; // Inicializar filteredLabs con todos los labs al cargar
+      }),
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error fetching labs', error);
+        if (error.error instanceof ErrorEvent) {
+          console.error('An error occurred:', error.error.message);
+        } else {
+          console.error(`Backend returned code ${error.status}, ` + `body was: ${error.error}`);
+        }
+        return throwError(error);
+      })
+    ).subscribe(); // Sigue siendo necesario el subscribe para activar la ejecución de la consulta
   }
+
+  buscar() {
+    if (!this.searchTerm) {
+      this.filteredLabs = [...this.labs]; // Mostrar todos los labs si no hay término de búsqueda
+      this.message = '';
+      return;
+    }
+
+    const filters: any = {};
+    filters[this.searchCriteria] = this.searchTerm;
+
+    this.listaClipsService.search(filters).pipe(
+      map((data: any) => {
+        if (data.length > 0) {
+          this.filteredLabs = data;
+          this.message = '';
+        } else {
+          this.filteredLabs = [];
+          this.message = 'No se han encontrado esos datos';
+        }
+      }),
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error fetching data', error);
+        if (error.error instanceof ErrorEvent) {
+          this.message = `An error occurred: ${error.error.message}`;
+        } else {
+          this.message = `Backend returned code ${error.status}, ` + `body was: ${error.error}`;
+        }
+        return throwError(error);
+      })
+    ).subscribe(); // Aquí sigue siendo necesario el subscribe para activar la ejecución de la consulta
+  }
+
   generarPDF() {
     const data = document.getElementById('tabla-clips');
   
