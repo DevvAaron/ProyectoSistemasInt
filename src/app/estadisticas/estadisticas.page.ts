@@ -484,45 +484,42 @@ generateHorizontalBarChart(labels: string[], valores: number[], title: string) {
     return colores;
   }
 
-imprimir() {
-  const pdf = new jsPDF('landscape', 'mm', 'a4');
-  const options = { scale: 2 };
-
-  // Obtener los elementos canvas de los gráficos
-  const pieCanvas = document.getElementById('pie-chart') as HTMLCanvasElement;
-  const barCanvas = document.getElementById('bar-chart') as HTMLCanvasElement;
-  const lineCanvas = document.getElementById('line-chart') as HTMLCanvasElement;
-  const horizontalBarCanvas = document.getElementById('fourth-chart') as HTMLCanvasElement;
-
-  // Usar html2canvas para convertir los canvas en imágenes
-  html2canvas(pieCanvas, options).then((canvas) => {
-    const imgData = canvas.toDataURL('image/png');
-    pdf.addImage(imgData, 'PNG', 10, 10, 180, 150); // Agregar imagen al PDF
-    pdf.addPage(); // Nueva página para el siguiente gráfico
-
-    html2canvas(barCanvas, options).then((canvas) => {
-      const imgData = canvas.toDataURL('image/png');
-      pdf.addImage(imgData, 'PNG', 10, 10, 180, 150);
-      pdf.addPage();
-
-      html2canvas(lineCanvas, options).then((canvas) => {
+  imprimir() {
+    const pdf = new jsPDF('landscape', 'mm', 'a4');
+    const options = { scale: 2 };
+  
+    // Obtener los elementos canvas de los gráficos
+    const pieCanvas = document.getElementById('pie-chart') as HTMLCanvasElement;
+    const barCanvas = document.getElementById('bar-chart') as HTMLCanvasElement;
+    const lineCanvas = document.getElementById('line-chart') as HTMLCanvasElement;
+    const horizontalBarCanvas = document.getElementById('fourth-chart') as HTMLCanvasElement;
+  
+    const addCanvasToPDF = (canvas: HTMLCanvasElement, pdf: jsPDF, addNewPage: boolean = true) => {
+      html2canvas(canvas, options).then((canvas) => {
         const imgData = canvas.toDataURL('image/png');
-        pdf.addImage(imgData, 'PNG', 10, 10, 180, 150);
-        pdf.addPage();
-
-        html2canvas(horizontalBarCanvas, options).then((canvas) => {
-          const imgData = canvas.toDataURL('image/png');
-          pdf.addImage(imgData, 'PNG', 10, 10, 180, 150);
-
+        const imgWidth = 180; // Ancho de la imagen en el PDF
+        const imgHeight = 150; // Alto de la imagen en el PDF
+        const margin = 10;
+        const x = (pdf.internal.pageSize.getWidth() - imgWidth) / 2; // Coordenada X centrada
+        const y = (pdf.internal.pageSize.getHeight() - imgHeight) / 2; // Coordenada Y centrada
+  
+        pdf.addImage(imgData, 'PNG', x, y, imgWidth, imgHeight); // Agregar imagen centrada al PDF
+        pdf.rect(x - margin / 2, y - margin / 2, imgWidth + margin, imgHeight + margin); // Agregar marco
+        if (addNewPage) {
+          pdf.addPage(); // Nueva página para el siguiente gráfico
+        } else {
           // Guardar o abrir el PDF generado
           pdf.save('graficos.pdf');
-        });
+        }
       });
-    });
-  });
-}
+    };
   
-  
+    addCanvasToPDF(pieCanvas, pdf);
+    addCanvasToPDF(barCanvas, pdf);
+    addCanvasToPDF(lineCanvas, pdf);
+    addCanvasToPDF(horizontalBarCanvas, pdf, false);
+  }
+
   goToPanelControl() {
     this.navCtrl.navigateForward('/panel-control');
   }
