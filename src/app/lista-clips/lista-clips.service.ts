@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ListaClipsService {
   private apiUrl = 'http://localhost:3000';
+
   constructor(private http: HttpClient) {}
 
   search(filters: any): Observable<any> {

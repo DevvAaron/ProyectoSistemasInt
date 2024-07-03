@@ -30,36 +30,31 @@ export class ListaClipsPage implements OnInit {
   }
 
   cargarLabs() {
-    this.listaClipsService.getLabs().pipe(
-      map((data: any) => {
+    this.listaClipsService.getLabs().subscribe(
+      (data: any) => {
         console.log('Labs:', data);
         this.labs = data;
         this.filteredLabs = [...this.labs]; // Inicializar filteredLabs con todos los labs al cargar
-      }),
-      catchError((error: HttpErrorResponse) => {
+      },
+      (error: HttpErrorResponse) => {
         console.error('Error fetching labs', error);
-        if (error.error instanceof ErrorEvent) {
-          console.error('An error occurred:', error.error.message);
-        } else {
-          console.error(`Backend returned code ${error.status}, ` + `body was: ${error.error}`);
-        }
-        return throwError(error);
-      })
-    ).subscribe(); // Sigue siendo necesario el subscribe para activar la ejecución de la consulta
+        this.message = 'Error al cargar los laboratorios. Por favor, inténtelo de nuevo más tarde.';
+      }
+    );
   }
-
+  
   buscar() {
     if (!this.searchTerm) {
       this.filteredLabs = [...this.labs]; // Mostrar todos los labs si no hay término de búsqueda
       this.message = '';
       return;
     }
-
+  
     const filters: any = {};
     filters[this.searchCriteria] = this.searchTerm;
-
-    this.listaClipsService.search(filters).pipe(
-      map((data: any) => {
+  
+    this.listaClipsService.search(filters).subscribe(
+      (data: any) => {
         if (data.length > 0) {
           this.filteredLabs = data;
           this.message = '';
@@ -67,18 +62,14 @@ export class ListaClipsPage implements OnInit {
           this.filteredLabs = [];
           this.message = 'No se han encontrado esos datos';
         }
-      }),
-      catchError((error: HttpErrorResponse) => {
+      },
+      (error: HttpErrorResponse) => {
         console.error('Error fetching data', error);
-        if (error.error instanceof ErrorEvent) {
-          this.message = `An error occurred: ${error.error.message}`;
-        } else {
-          this.message = `Backend returned code ${error.status}, ` + `body was: ${error.error}`;
-        }
-        return throwError(error);
-      })
-    ).subscribe(); // Aquí sigue siendo necesario el subscribe para activar la ejecución de la consulta
+        this.message = 'Error al realizar la búsqueda. Por favor, inténtelo de nuevo más tarde.';
+      }
+    );
   }
+
 
   generarPDF() {
     const data = document.getElementById('tabla-clips');
@@ -124,7 +115,6 @@ export class ListaClipsPage implements OnInit {
       console.error('No se encontró el elemento con el ID "tabla-clips".');
     }
   }
-  
   
   formatTime(timeValue: number): string {
     return timeValue < 10 ? '0' + timeValue : '' + timeValue;

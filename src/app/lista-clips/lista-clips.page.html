@@ -65,17 +65,17 @@
             </ion-select>
           </ion-item>
           <ion-searchbar [(ngModel)]="searchTerm" placeholder="Ingrese término de búsqueda" class="google-searchbar"></ion-searchbar>
-          <ion-button (click)="buscar()">BUSCAR</ion-button>
+          <ion-button (click)="buscar()" expand="block">BUSCAR</ion-button>
         </div>
       </ion-toolbar>
     
       <!-- Tabla de resultados -->
-      <ion-grid id="tabla-clips" *ngIf="labs.length > 0">
+      <ion-grid id="tabla-clips" *ngIf="filteredLabs.length > 0">
         <ion-row>
           <ion-col>
             <ion-header>NumLab</ion-header>
             <ion-list>
-              <ion-item *ngFor="let lab of labs">
+              <ion-item *ngFor="let lab of filteredLabs">
                 <div>{{ lab.NumLab }}</div>
               </ion-item>
             </ion-list>
@@ -83,7 +83,7 @@
           <ion-col>
             <ion-header>Profesor</ion-header>
             <ion-list>
-              <ion-item *ngFor="let lab of labs">
+              <ion-item *ngFor="let lab of filteredLabs">
                 <div>{{ lab.Profesor }}</div>
               </ion-item>
             </ion-list>
@@ -91,7 +91,7 @@
           <ion-col>
             <ion-header>Turno</ion-header>
             <ion-list>
-              <ion-item *ngFor="let lab of labs">
+              <ion-item *ngFor="let lab of filteredLabs">
                 <div>{{ lab.Turno }}</div>
               </ion-item>
             </ion-list>
@@ -99,7 +99,7 @@
           <ion-col>
             <ion-header>Curso</ion-header>
             <ion-list>
-              <ion-item *ngFor="let lab of labs">
+              <ion-item *ngFor="let lab of filteredLabs">
                 <div>{{ lab.Curso }}</div>
               </ion-item>
             </ion-list>
@@ -107,10 +107,12 @@
         </ion-row>
       </ion-grid>
     
+      <!-- Mensaje de error o información -->
       <ion-item *ngIf="message">
         <ion-label>{{ message }}</ion-label>
       </ion-item>
     
+      <!-- Botón para generar PDF -->
       <ion-button id="boton-imprimir" expand="block" (click)="generarPDF()">IMPRIMIR</ion-button>
     </ion-content>
   </div>
