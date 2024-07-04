@@ -57,15 +57,15 @@
       <ion-toolbar class="custom-toolbar">
         <div class="search-container">
           <ion-item class="search-category">
-            <ion-label class="rounded-label">Buscar por</ion-label>
             <ion-select [(ngModel)]="searchCriteria" interface="popover" placeholder="Seleccione criterio" class="rounded-select">
+              <div  slot="label">Buscar por <ion-text color="danger">(Requerido)</ion-text></div>
               <ion-select-option value="profesor">Profesor</ion-select-option>
               <ion-select-option value="laboratorio">Laboratorio</ion-select-option>
               <ion-select-option value="turno">Turno</ion-select-option>
             </ion-select>
           </ion-item>
           <ion-searchbar [(ngModel)]="searchTerm" placeholder="Ingrese término de búsqueda" class="google-searchbar"></ion-searchbar>
-          <ion-button (click)="buscar()" expand="block">
+          <ion-button color="dark" fill="solid" shape="round" (click)="buscar()" expand="block">
             <ion-icon slot="icon-only" name="search"></ion-icon>
           </ion-button>
         </div>

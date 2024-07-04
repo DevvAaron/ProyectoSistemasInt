@@ -294,7 +294,7 @@ ion-button {
   border-radius: 25px; // Bordes redondeados
   border: 2px solid #ccc; // Contorno gris claro
   height: 50px; // Altura ajustada
-  min-width: 350px; // Ancho mínimo ajustado
+  min-width: 300px; // Ancho mínimo ajustado
 }
 
 // Estilo del ion-label
@@ -311,7 +311,6 @@ ion-button {
 // Estilo del ion-select
 .rounded-select {
   --background: transparent; // Fondo transparente
-  --color: #000; // Texto negro
   --placeholder-color: #999; // Color del placeholder gris
   border-radius: 25px; // Bordes redondeados
   border: none;
