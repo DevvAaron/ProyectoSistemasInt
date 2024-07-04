@@ -65,7 +65,9 @@
             </ion-select>
           </ion-item>
           <ion-searchbar [(ngModel)]="searchTerm" placeholder="Ingrese término de búsqueda" class="google-searchbar"></ion-searchbar>
-          <ion-button (click)="buscar()" expand="block">BUSCAR</ion-button>
+          <ion-button (click)="buscar()" expand="block">
+            <ion-icon slot="icon-only" name="search"></ion-icon>
+          </ion-button>
         </div>
       </ion-toolbar>
     

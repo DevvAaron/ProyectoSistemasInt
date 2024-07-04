@@ -328,7 +328,7 @@ ion-button {
   --placeholder-color: #999; // Color del placeholder
   --icon-color: #666; // Color del icono
   margin-right: 10px;
-  width: 750px; // Ancho del searchbar ajustado
+  width: 700px; // Ancho del searchbar ajustado
 
   input {
     font-size: 14px;
@@ -361,8 +361,11 @@ ion-button {
   margin-top: 10px; // Reducir el margen superior de la tabla
 }
 
-// Opcional: Ajuste del botón de búsqueda
+// Estilo del ion-button con icono de lupa
 ion-button {
   margin-left: 10px;
   border-radius: 25px; // Bordes redondeados del botón
+  --padding-start: 12px; // Ajustar el padding inicial para centrado
+  --padding-end: 12px; // Ajustar el padding final para centrado
+  --icon-size: 20px; // Tamaño del icono
 }
