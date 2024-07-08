@@ -1,0 +1,142 @@
+/* Custom styles for video background */
+ion-content {
+  --background: transparent; // Asegura que el fondo de ion-content sea transparente
+
+  #video-background {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1000;
+  }
+}
+
+/* Estilos adicionales para el contenido principal */
+ion-content.container {
+  --background: transparent; /* Color de fondo del contenido principal */
+}
+
+/* Contenedor principal */
+.main-container {
+  display: flex;
+  justify-content: center; /* Alinea el contenido al centro horizontalmente */
+  align-items: center; /* Alinea el contenido al centro verticalmente */
+  padding-top: 30px; /* Espacio superior para ajuste */
+}
+
+/* Estilos para la tabla y el gráfico */
+.left-container,
+.right-container {
+  width: 50%; /* Divide la pantalla en dos columnas */
+}
+
+.left-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px; /* Espacio entre el video y la tabla */
+}
+
+.right-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table-container {
+  width: 100%;
+  margin-top: 20px;
+  background-color: #1e2e75;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.chart-container {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Asegura que la animación se ejecute siempre */
+.chart-container.loaded {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Estilos para la tabla */
+#turno-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center; /* Centrar todo el contenido */
+  font-size: 20px;
+}
+
+.table-container {
+  flex: 1;
+  margin-right: 20px;
+  margin-top: 20px; /* Ajuste la cantidad de margen según sea necesario */
+  border: 3px solid rgb(248, 248, 248); /* Borde negro alrededor de la tabla */
+  max-width: 700px; /* Ajusta el ancho de la tabla */
+  background-color: rgb(30, 46, 117); /* Fondo */
+  border-radius: 4px; /* Bordes redondeados */
+  overflow: hidden; /* Evita que los elementos se salgan del contenedor */
+}
+
+#turno-table th,
+#turno-table td {
+  padding: 15px; /* Ajuste el padding según el espaciado deseado */
+  color: black; /* Color del texto */
+  vertical-align: middle; /* Alinear verticalmente al centro */
+  background-color: #ffffff; /* Color de fondo de las celdas */
+}
+
+#turno-table th {
+  background-color: #ff0800; /* Color de fondo del encabezado */
+  color: white; /* Color del texto del encabezado */
+  text-transform: uppercase; /* Texto en mayúsculas */
+  font-weight: bold; /* Texto en negrita */
+}
+
+#turno-table tr:nth-child(even) {
+  background-color: #050505;
+}
+
+#turno-table tr:hover {
+  background-color: #090909;
+}
+
+/* Estilos para ion-input */
+ion-input {
+  max-width: 300px;
+  width: 100%;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --border-radius: 8px;
+  --background: #000;
+  --border-color: #ccc;
+  --placeholder-color: #999;
+  --placeholder-opacity: 1;
+}

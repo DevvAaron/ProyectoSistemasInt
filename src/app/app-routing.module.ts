@@ -35,6 +35,26 @@ const routes: Routes = [
     path: 'visua-clip',
     loadChildren: () => import('./visua-clip/visua-clip.module').then( m => m.VisuaClipPageModule)
   },
+  {
+  path: 'seleccion-estadisticas',
+  loadChildren: () => import('./seleccion-estadisticas/seleccion-estadisticas.module').then( m => m.SeleccionEstadisticasPageModule)
+},
+{
+  path: 'lab-incidentes',
+  loadChildren: () => import('./lab-incidentes/lab-incidentes.module').then( m => m.LabIncidentesPageModule)
+},
+{
+  path: 'prof-incidentes',
+  loadChildren: () => import('./prof-incidentes/prof-incidentes.module').then( m => m.ProfIncidentesPageModule)
+},
+{
+  path: 'curso-incidentes',
+  loadChildren: () => import('./curso-incidentes/curso-incidentes.module').then( m => m.CursoIncidentesPageModule)
+},
+{
+  path: 'turn-incidentes',
+  loadChildren: () => import('./turn-incidentes/turn-incidentes.module').then( m => m.TurnIncidentesPageModule)
+},
 
 ];
 

@@ -1,5 +1,4 @@
 <ion-app>
-  <!-- Menú lateral -->
   <ion-menu side="start" contentId="main-content">
     <ion-header>
       <ion-toolbar>
@@ -23,8 +22,6 @@
       </ion-list>
     </ion-content>
   </ion-menu>
-
-  <!-- Encabezado principal -->
   <ion-header>
     <ion-toolbar>
       <ion-buttons slot="start">
@@ -38,14 +35,15 @@
       <ion-title>SECURITYLAB</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <!-- Contenido principal -->
   <ion-content id="main-content" [fullscreen]="true">
-    <!-- Video de fondo -->
     <video autoplay muted loop id="video-background" preload="auto" onended="this.play()">
       <source src="../assets/Videos/fondo2.mp4" type="video/mp4">
     </video>
 
+    <!-- Botón en el centro de la pantalla -->
+    <ion-button expand="block" (click)="goToSeleccionEstadisticas()">
+      Seleccionar Estadísticas
+    </ion-button>
     <!-- Contenedor del gráfico de torta -->
     <div class="main-container" id="estadisticas">
       <div class="chart-container">
@@ -92,4 +90,5 @@
     </div>
     <div style="height: 70px;"></div>
   </ion-content>
+  
 </ion-app>

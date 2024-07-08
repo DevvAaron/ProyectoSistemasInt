@@ -16,12 +16,13 @@ export class SeleccionPage implements OnInit {
   goToPanelControl(){
     this.navCtrl.navigateForward('/panel-control');
   }
-  goToEstadisticas(){
-    this.navCtrl.navigateForward('/estadisticas');
+  goToSeleccionEstadisticas(){
+    this.navCtrl.navigateForward('/seleccion-estadisticas');
   }
   goToListaClips(){
     this.navCtrl.navigateForward('/lista-clips');
   }
+
 
   openMenu() {
     this.menuCtrl.enable(true, 'start'); // Habilita la ventana deslizable

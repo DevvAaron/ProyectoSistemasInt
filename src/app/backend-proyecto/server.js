@@ -13,7 +13,7 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   database: 'ProyectoSistemas', // Nombre de tu base de datos
-  port: 3307
+  port: 3306
 });
 
 db.connect((err) => {

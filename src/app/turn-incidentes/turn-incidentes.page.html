@@ -1,0 +1,35 @@
+<ion-app>
+  <ion-content [fullscreen]="true" class="container">
+    <div class="main-container">
+
+      <div class="left-container">
+        <video autoplay muted loop id="video-background">
+          <source src="../assets/Videos/video2.mp4" type="video/mp4">
+        </video>
+        <ion-input type="text" placeholder="Buscar por turno" (input)="filtrarPorTurno($event)"></ion-input>
+        <div class="table-container">
+          <table id="turno-table" border="1">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Turno</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Filas de la tabla serán generadas dinámicamente -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="right-container">
+        <div class="chart-container">
+          <canvas id="line-chart"></canvas>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="height: 30px;"></div>
+  </ion-content>
+</ion-app>
